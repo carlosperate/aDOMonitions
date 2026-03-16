@@ -1,0 +1,51 @@
+{
+  "name": "adomonitions",
+  "version": "0.1.0",
+  "description": "Post-process static HTML to convert blockquotes and fenced markers into styled admonition callout boxes",
+  "author": "Carlos Pereira Atencio",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/adomonitions.umd.js",
+  "module": "dist/adomonitions.esm.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/adomonitions.esm.js",
+      "require": "./dist/adomonitions.umd.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./themes/*": "./dist/themes/*"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "admonition",
+    "callout",
+    "blockquote",
+    "markdown",
+    "static-site",
+    "github-alerts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlosperate/aDOMonitions"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/jsdom": "^28.0.0",
+    "jsdom": "^29.0.0",
+    "rollup": "^4.59.0",
+    "rollup-plugin-string": "^3.0.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  }
+}
