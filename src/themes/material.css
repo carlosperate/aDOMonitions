@@ -1,0 +1,63 @@
+/*
+ * aDOMonitions — material theme (colors + style overrides)
+ *
+ * Styled after MkDocs Material admonitions (accent left-border,
+ * uppercase title, subtle shadow).
+ *
+ * Colors from the Material Design 2014 palette.
+ * See: https://m2.material.io/design/color/the-color-system.html
+ *   note:      Blue A200 (#448aff)      / Indigo 50 (#e8eaf6)
+ *   tip:       Teal A400 (#00bfa5)      / Teal 50 (#e0f2f1)
+ *   important: Deep Purple A200 (#7c4dff) / Deep Purple 50 (#ede7f6)
+ *   warning:   Orange A400 (#ff9100)    / Orange 50 (#fff3e0)
+ *   caution:   Red A200 (#ff5252)       / Pink 50 (#fce4ec)
+ *   info:      Cyan A400 (#00b8d4)      / Cyan 50 (#e0f7fa)
+ *   danger:    Red A400 (#ff1744)       / Pink 50 (#fce4ec)
+ */
+
+/* Style overrides (core.css provides the base) */
+.adomonitions {
+  border-radius: 0.125em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.adomonitions-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+
+.adomonitions-icon {
+  font-size: 1.25em;
+}
+
+/* Type colors */
+.adomonitions-note {
+  --adomonitions-color: #448aff;
+  --adomonitions-bg: #e8eaf6;
+}
+.adomonitions-tip {
+  --adomonitions-color: #00bfa5;
+  --adomonitions-bg: #e0f2f1;
+}
+.adomonitions-important {
+  --adomonitions-color: #7c4dff;
+  --adomonitions-bg: #ede7f6;
+}
+.adomonitions-warning {
+  --adomonitions-color: #ff9100;
+  --adomonitions-bg: #fff3e0;
+}
+.adomonitions-caution {
+  --adomonitions-color: #ff5252;
+  --adomonitions-bg: #fce4ec;
+}
+.adomonitions-info {
+  --adomonitions-color: #00b8d4;
+  --adomonitions-bg: #e0f7fa;
+}
+.adomonitions-danger {
+  --adomonitions-color: #ff1744;
+  --adomonitions-bg: #fce4ec;
+}

@@ -1,0 +1,42 @@
+/*
+ * aDOMonitions — core structural CSS
+ *
+ * Always injected. Provides layout, flexbox, sizing, and wires up
+ * the --adomonitions-color / --adomonitions-bg custom properties.
+ * Theme files only need to set those two variables per type.
+ */
+
+.adomonitions {
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  border-left: 0.25em solid var(--adomonitions-color);
+  border-radius: 0.375em;
+  background-color: var(--adomonitions-bg);
+}
+
+.adomonitions > :last-child {
+  margin-bottom: 0;
+}
+
+.adomonitions-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--adomonitions-color);
+  margin: 0 0 0.4em;
+}
+
+.adomonitions-title:last-child {
+  margin-bottom: 0;
+}
+
+.adomonitions-icon {
+  display: inline-flex;
+  margin-right: 0.5em;
+}
+
+.adomonitions-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
