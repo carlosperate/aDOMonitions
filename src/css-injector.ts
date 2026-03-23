@@ -8,15 +8,15 @@
  */
 
 import type { ThemeName } from "./types.js";
-import { getThemeCSS } from "./themes/index.js";
+import { coreCSS, getThemeCSS } from "./themes/index.js";
 
 /** ID used on the injected `<style>` element for duplicate detection. */
 const STYLE_ID = "adomonitions-theme";
 
 /**
- * Injects the CSS for the given theme into the document `<head>` as a
- * `<style id="adomonitions-theme">` element. Skips injection if the
- * style element already exists (prevents duplicates).
+ * Injects core structural CSS and the selected theme's color CSS into
+ * the document `<head>` as a single `<style id="adomonitions-theme">`
+ * element. Skips injection if the style element already exists.
  *
  * @param theme - The name of the bundled theme to inject.
  */
@@ -25,6 +25,6 @@ export function injectCSS(theme: ThemeName): void {
 
   const style = document.createElement("style");
   style.id = STYLE_ID;
-  style.textContent = getThemeCSS(theme);
+  style.textContent = coreCSS + "\n" + getThemeCSS(theme);
   document.head.appendChild(style);
 }

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { injectCSS } from "../src/css-injector.js";
-import { getThemeCSS } from "../src/themes/index.js";
+import { coreCSS, getThemeCSS } from "../src/themes/index.js";
 
 const STYLE_ID = "adomonitions-theme";
 
@@ -28,19 +28,20 @@ describe("injectCSS", () => {
     expect(style!.id).toBe(STYLE_ID);
   });
 
-  it("contains the theme CSS content", () => {
+  it("contains core CSS and theme CSS content", () => {
     injectCSS("github-light");
 
     const style = document.getElementById(STYLE_ID);
-    // Themes are stubs (empty strings) until Phase 7, but the mechanism works
-    expect(style!.textContent).toBe(getThemeCSS("github-light"));
+    expect(style!.textContent).toContain(coreCSS);
+    expect(style!.textContent).toContain(getThemeCSS("github-light"));
   });
 
   it("injects the correct theme when a different theme is specified", () => {
     injectCSS("material");
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toBe(getThemeCSS("material"));
+    expect(style!.textContent).toContain(coreCSS);
+    expect(style!.textContent).toContain(getThemeCSS("material"));
   });
 });
 

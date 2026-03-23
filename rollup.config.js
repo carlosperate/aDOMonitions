@@ -1,17 +1,18 @@
-import typescript from '@rollup/plugin-typescript';
-import terser from '@rollup/plugin-terser';
-import { readFileSync, mkdirSync, writeFileSync, readdirSync } from 'fs';
-import { resolve, basename } from 'path';
+import typescript from "@rollup/plugin-typescript";
+import terser from "@rollup/plugin-terser";
+import { readFileSync, mkdirSync, writeFileSync, readdirSync } from "fs";
+import { resolve, basename } from "path";
 
-// Inline plugin: import .css files as exported strings
+// Inline plugin: import .css files as exported strings (comments stripped)
 function cssString() {
   return {
-    name: 'css-string',
+    name: "css-string",
     transform(code, id) {
-      if (id.endsWith('.css')) {
+      if (id.endsWith(".css")) {
+        const stripped = code.replace(/\/\*[\s\S]*?\*\//g, "").trim();
         return {
-          code: `export default ${JSON.stringify(code)};`,
-          map: { mappings: '' },
+          code: `export default ${JSON.stringify(stripped)};`,
+          map: { mappings: "" },
         };
       }
     },
@@ -21,15 +22,15 @@ function cssString() {
 // Inline plugin: copy standalone CSS files to dist/themes/
 function copyThemes() {
   return {
-    name: 'copy-themes',
+    name: "copy-themes",
     writeBundle() {
-      const srcDir = resolve('src/themes');
-      const outDir = resolve('dist/themes');
+      const srcDir = resolve("src/themes");
+      const outDir = resolve("dist/themes");
       mkdirSync(outDir, { recursive: true });
       try {
-        const files = readdirSync(srcDir).filter(f => f.endsWith('.css'));
+        const files = readdirSync(srcDir).filter((f) => f.endsWith(".css"));
         for (const file of files) {
-          const content = readFileSync(resolve(srcDir, file), 'utf-8');
+          const content = readFileSync(resolve(srcDir, file), "utf-8");
           writeFileSync(resolve(outDir, file), content);
         }
       } catch {
@@ -40,11 +41,8 @@ function copyThemes() {
 }
 
 const shared = {
-  input: 'src/index.ts',
-  plugins: [
-    cssString(),
-    typescript({ tsconfig: './tsconfig.json' }),
-  ],
+  input: "src/index.ts",
+  plugins: [cssString(), typescript({ tsconfig: "./tsconfig.json" })],
 };
 
 export default [
@@ -52,8 +50,8 @@ export default [
   {
     ...shared,
     output: {
-      file: 'dist/adomonitions.esm.js',
-      format: 'es',
+      file: "dist/adomonitions.esm.js",
+      format: "es",
       sourcemap: true,
     },
   },
@@ -61,24 +59,20 @@ export default [
   {
     ...shared,
     output: {
-      file: 'dist/adomonitions.umd.js',
-      format: 'umd',
-      name: 'adomonitions',
+      file: "dist/adomonitions.umd.js",
+      format: "umd",
+      name: "adomonitions",
       sourcemap: true,
     },
   },
   // UMD (minified)
   {
     ...shared,
-    plugins: [
-      ...shared.plugins,
-      terser(),
-      copyThemes(),
-    ],
+    plugins: [...shared.plugins, terser(), copyThemes()],
     output: {
-      file: 'dist/adomonitions.umd.min.js',
-      format: 'umd',
-      name: 'adomonitions',
+      file: "dist/adomonitions.umd.min.js",
+      format: "umd",
+      name: "adomonitions",
       sourcemap: true,
     },
   },
