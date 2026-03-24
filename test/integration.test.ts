@@ -206,6 +206,37 @@ describe("init — idempotency", () => {
 });
 
 // ---------------------------------------------------------------------------
+// Theme switching
+// ---------------------------------------------------------------------------
+
+describe("init — theme switching", () => {
+  it("switches theme CSS when init is called again with a different theme", () => {
+    init({ theme: "github-light" });
+    init({ theme: "material" });
+
+    const style = document.getElementById(STYLE_ID);
+    expect(style!.getAttribute("data-theme")).toBe("material");
+    expect(style!.textContent).toContain(getThemeCSS("material"));
+  });
+
+  it("does not create a second style element on theme switch", () => {
+    init({ theme: "github-light" });
+    init({ theme: "github-dark" });
+
+    const styles = document.querySelectorAll(`#${STYLE_ID}`);
+    expect(styles.length).toBe(1);
+  });
+
+  it("preserves core CSS after theme switch", () => {
+    init({ theme: "github-light" });
+    init({ theme: "docusaurus" });
+
+    const style = document.getElementById(STYLE_ID);
+    expect(style!.textContent).toContain(coreCSS);
+  });
+});
+
+// ---------------------------------------------------------------------------
 // Custom classes
 // ---------------------------------------------------------------------------
 

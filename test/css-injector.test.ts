@@ -28,6 +28,13 @@ describe("injectCSS", () => {
     expect(style!.id).toBe(STYLE_ID);
   });
 
+  it("sets data-theme attribute to the active theme name", () => {
+    injectCSS("github-light");
+
+    const style = document.getElementById(STYLE_ID);
+    expect(style!.getAttribute("data-theme")).toBe("github-light");
+  });
+
   it("contains core CSS and theme CSS content", () => {
     injectCSS("github-light");
 
@@ -42,14 +49,15 @@ describe("injectCSS", () => {
     const style = document.getElementById(STYLE_ID);
     expect(style!.textContent).toContain(coreCSS);
     expect(style!.textContent).toContain(getThemeCSS("material"));
+    expect(style!.getAttribute("data-theme")).toBe("material");
   });
 });
 
 // ---------------------------------------------------------------------------
-// Duplicate prevention
+// Idempotency (same theme)
 // ---------------------------------------------------------------------------
 
-describe("injectCSS — duplicate prevention", () => {
+describe("injectCSS — same theme idempotency", () => {
   it("does not inject a second <style> if one already exists", () => {
     injectCSS("github-light");
     injectCSS("github-light");
@@ -58,17 +66,53 @@ describe("injectCSS — duplicate prevention", () => {
     expect(styles.length).toBe(1);
   });
 
-  it("does not overwrite existing style when called again with different theme", () => {
+  it("does not change content when called again with same theme", () => {
     injectCSS("github-light");
     const firstContent = document.getElementById(STYLE_ID)!.textContent;
 
+    injectCSS("github-light");
+
+    expect(document.getElementById(STYLE_ID)!.textContent).toBe(firstContent);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Theme switching
+// ---------------------------------------------------------------------------
+
+describe("injectCSS — theme switching", () => {
+  it("replaces content when called with a different theme", () => {
+    injectCSS("github-light");
     injectCSS("material");
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toBe(firstContent);
+    expect(style!.textContent).toContain(getThemeCSS("material"));
+    expect(style!.getAttribute("data-theme")).toBe("material");
   });
 
-  it("skips injection if a style with the id was manually added", () => {
+  it("still contains core CSS after theme switch", () => {
+    injectCSS("github-light");
+    injectCSS("material");
+
+    const style = document.getElementById(STYLE_ID);
+    expect(style!.textContent).toContain(coreCSS);
+  });
+
+  it("does not create a second <style> element on theme switch", () => {
+    injectCSS("github-light");
+    injectCSS("material");
+
+    const styles = document.querySelectorAll(`#${STYLE_ID}`);
+    expect(styles.length).toBe(1);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Manually added style element
+// ---------------------------------------------------------------------------
+
+describe("injectCSS — manual style element", () => {
+  it("skips injection if a style with the id was manually added (no data-theme)", () => {
     const manual = document.createElement("style");
     manual.id = STYLE_ID;
     manual.textContent = "/* custom */";
