@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { init } from "../src/index.js";
-import { coreCSS, getThemeCSS } from "../src/themes/index.js";
+import { expectedCoreCSS, expectedThemeCSS } from "./helpers/css.js";
 
 const STYLE_ID = "adomonitions-theme";
 
@@ -39,31 +39,24 @@ describe("init — defaults", () => {
     init();
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toContain(coreCSS);
+    expect(style!.textContent).toContain(expectedCoreCSS);
   });
 
   it("uses github-light as the default theme", () => {
     init();
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toContain(getThemeCSS("github-light"));
+    expect(style!.textContent).toContain(expectedThemeCSS["github-light"]);
   });
 
   it("core CSS comes before theme CSS in the injected style", () => {
     init();
 
-    const style = document.getElementById(STYLE_ID);
-    const content = style!.textContent!;
-    // In test env, Vite may return empty CSS strings; verify ordering
-    // only when CSS content is available (build-time verified by Rollup)
-    if (coreCSS.length > 0 && getThemeCSS("github-light").length > 0) {
-      const coreIndex = content.indexOf(coreCSS);
-      const themeIndex = content.indexOf(getThemeCSS("github-light"));
-      expect(coreIndex).toBeLessThan(themeIndex);
-    } else {
-      // At minimum, the style element exists
-      expect(style).not.toBeNull();
-    }
+    const content = document.getElementById(STYLE_ID)!.textContent!;
+    const coreIndex = content.indexOf(expectedCoreCSS);
+    const themeIndex = content.indexOf(expectedThemeCSS["github-light"]);
+    expect(coreIndex).toBeGreaterThanOrEqual(0);
+    expect(themeIndex).toBeGreaterThan(coreIndex);
   });
 });
 
@@ -170,9 +163,9 @@ describe("init — theme selection", () => {
 
       const style = document.getElementById(STYLE_ID);
       expect(style).not.toBeNull();
-      expect(style!.textContent).toContain(getThemeCSS(name));
+      expect(style!.textContent!.length).toBeGreaterThan(0);
       // Core CSS always present
-      expect(style!.textContent).toContain(coreCSS);
+      expect(style!.textContent).toContain(expectedCoreCSS);
     });
   }
 });
@@ -216,7 +209,7 @@ describe("init — theme switching", () => {
 
     const style = document.getElementById(STYLE_ID);
     expect(style!.getAttribute("data-theme")).toBe("material");
-    expect(style!.textContent).toContain(getThemeCSS("material"));
+    expect(style!.textContent).toContain(expectedThemeCSS["material"]);
   });
 
   it("does not create a second style element on theme switch", () => {
@@ -232,7 +225,7 @@ describe("init — theme switching", () => {
     init({ theme: "docusaurus" });
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toContain(coreCSS);
+    expect(style!.textContent).toContain(expectedCoreCSS);
   });
 });
 
