@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aDOMonitions Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+          sans-serif;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #f6f8fa;
+        color: #1f2328;
+      }
+      h1 {
+        margin-bottom: 0.25em;
+      }
+      h1 small {
+        font-weight: 400;
+        color: #656d76;
+        font-size: 0.5em;
+      }
+      h2 {
+        margin-top: 2rem;
+        border-bottom: 1px solid #d1d9e0;
+        padding-bottom: 0.3em;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid #d1d9e0;
+        border-radius: 6px;
+      }
+      .controls label {
+        font-weight: 600;
+        margin-right: 0.5rem;
+        align-self: center;
+      }
+      .controls select,
+      .controls button {
+        padding: 0.4em 0.8em;
+        border: 1px solid #d1d9e0;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        background: #fff;
+        cursor: pointer;
+      }
+      .controls button {
+        background: #2da44e;
+        color: #fff;
+        border-color: #2da44e;
+        font-weight: 600;
+      }
+      .controls button:hover {
+        background: #218838;
+      }
+      .controls .btn-reset {
+        background: #6e7781;
+        border-color: #6e7781;
+      }
+      .controls .btn-reset:hover {
+        background: #575e65;
+      }
+
+      .example {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .example-label {
+        grid-column: 1 / -1;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #656d76;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid #d1d9e0;
+        border-radius: 6px;
+        padding: 1rem;
+        overflow: auto;
+      }
+      .panel-header {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #656d76;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+      }
+      pre {
+        background: #f6f8fa;
+        border-radius: 4px;
+        padding: 0.8em;
+        font-size: 0.82rem;
+        line-height: 1.5;
+        overflow-x: auto;
+        margin: 0;
+        white-space: pre;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      }
+
+      .status {
+        font-weight: 400;
+        font-size: 0.9em;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .status.raw {
+        color: #9a6700;
+      }
+      .status.transformed {
+        color: #1a7f37;
+      }
+
+      @media (max-width: 900px) {
+        .example {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>aDOMonitions <small>before / after demo</small></h1>
+    <p>
+      Click <strong>Transform</strong> to run <code>init()</code> on the
+      right-side panels.
+    </p>
+
+    <div class="controls">
+      <label for="theme-select">Theme:</label>
+      <select id="theme-select">
+        <option value="github-light" selected>github-light</option>
+        <option value="github-dark">github-dark</option>
+        <option value="github-auto">github-auto</option>
+        <option value="material">material</option>
+        <option value="docusaurus">docusaurus</option>
+      </select>
+      <button id="btn-transform">Transform</button>
+      <button id="btn-reset" class="btn-reset">Reset</button>
+    </div>
+
+    <!-- ================================================================== -->
+    <h2>GitHub-style blockquotes</h2>
+    <!-- ================================================================== -->
+
+    <div class="example">
+      <span class="example-label">Note (compact — body after &lt;br&gt;)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!NOTE]
+&gt; This is a compact note with the body on the same paragraph.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!NOTE]&lt;br&gt;This is a compact note with the
+  body on the same paragraph.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>
+              [!NOTE]<br />This is a compact note with the body on the same
+              paragraph.
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label"
+        >Tip (separated — body in next &lt;p&gt;)</span
+      >
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!TIP]
+&gt;
+&gt; Separate paragraph body with a **bold** word.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!TIP]&lt;/p&gt;
+  &lt;p&gt;Separate paragraph body with a
+  &lt;strong&gt;bold&lt;/strong&gt; word.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>[!TIP]</p>
+            <p>Separate paragraph body with a <strong>bold</strong> word.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Important (custom title)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!IMPORTANT] Breaking Change
+&gt; The API has changed in v2.0.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!IMPORTANT] Breaking Change&lt;br&gt;
+  The API has changed in v2.0.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>
+              [!IMPORTANT] Breaking Change<br />The API has changed in v2.0.
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Warning (multi-block body)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!WARNING]
+&gt;
+&gt; Do not run this in production.
+&gt;
+&gt; - It will delete data
+&gt; - It cannot be undone</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!WARNING]&lt;/p&gt;
+  &lt;p&gt;Do not run this in production.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;It will delete data&lt;/li&gt;
+    &lt;li&gt;It cannot be undone&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>[!WARNING]</p>
+            <p>Do not run this in production.</p>
+            <ul>
+              <li>It will delete data</li>
+              <li>It cannot be undone</li>
+            </ul>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Caution (inline body)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!CAUTION] This action is *irreversible*.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!CAUTION] This action is
+  &lt;em&gt;irreversible&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>[!CAUTION] This action is <em>irreversible</em>.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <h2>Docusaurus-style fences</h2>
+    <!-- ================================================================== -->
+
+    <div class="example">
+      <span class="example-label">Note (basic)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::note
+This is a Docusaurus-style note admonition.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::note&lt;/p&gt;
+&lt;p&gt;This is a Docusaurus-style note
+admonition.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::note</p>
+          <p>This is a Docusaurus-style note admonition.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Info (custom title)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::info Did you know?
+Admonitions support `inline code` and [links](#).
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::info Did you know?&lt;/p&gt;
+&lt;p&gt;Admonitions support
+&lt;code&gt;inline code&lt;/code&gt; and
+&lt;a href="#"&gt;links&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::info Did you know?</p>
+          <p>
+            Admonitions support <code>inline code</code> and
+            <a href="#">links</a>.
+          </p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Warning (multi-element body)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::warning
+Be careful with the following:
+
+- Unvalidated inputs
+- Missing error handling
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::warning&lt;/p&gt;
+&lt;p&gt;Be careful with the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unvalidated inputs&lt;/li&gt;
+  &lt;li&gt;Missing error handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::warning</p>
+          <p>Be careful with the following:</p>
+          <ul>
+            <li>Unvalidated inputs</li>
+            <li>Missing error handling</li>
+          </ul>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Danger</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::danger
+This will destroy your database. Proceed with extreme caution.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::danger&lt;/p&gt;
+&lt;p&gt;This will destroy your database.
+Proceed with extreme caution.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::danger</p>
+          <p>This will destroy your database. Proceed with extreme caution.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Tip</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::tip
+Use `theme: null` to bring your own CSS.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::tip&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;theme: null&lt;/code&gt;
+to bring your own CSS.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::tip</p>
+          <p>Use <code>theme: null</code> to bring your own CSS.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      // Try local build first (for development), fall back to unpkg (for GH Pages)
+      var s = document.createElement("script");
+      s.src = "../dist/adomonitions.umd.js";
+      s.onerror = function () {
+        var f = document.createElement("script");
+        f.src = "https://unpkg.com/adomonitions/dist/adomonitions.umd.js";
+        document.head.appendChild(f);
+      };
+      document.head.appendChild(s);
+    </script>
+    <script>
+      // Snapshot original HTML for reset
+      const liveEls = document.querySelectorAll(".live");
+      const originals = Array.from(liveEls).map((el) => el.innerHTML);
+      const statusEls = document.querySelectorAll(".status");
+      let transformed = false;
+
+      function setStatus(isTransformed) {
+        statusEls.forEach((el) => {
+          el.textContent = isTransformed ? "— transformed" : "— raw";
+          el.className = "status " + (isTransformed ? "transformed" : "raw");
+        });
+      }
+
+      setStatus(false);
+
+      function transformWithTheme(themeName) {
+        // init() handles theme switching automatically via data-theme attribute
+        document.querySelectorAll(".live.gh").forEach((el) => {
+          adomonitions.init({
+            root: el,
+            triggerStyle: "github",
+            theme: themeName,
+          });
+        });
+        document.querySelectorAll(".live.docu").forEach((el) => {
+          adomonitions.init({
+            root: el,
+            triggerStyle: "docusaurus",
+            theme: themeName,
+          });
+        });
+        transformed = true;
+        setStatus(true);
+      }
+
+      document.getElementById("btn-transform").addEventListener("click", () => {
+        // Reset HTML first if already transformed (so scanning has fresh input)
+        if (transformed) {
+          liveEls.forEach((el, i) => {
+            el.innerHTML = originals[i];
+          });
+        }
+        transformWithTheme(document.getElementById("theme-select").value);
+      });
+
+      // Switch theme live — just call init() once to swap CSS (scanning is idempotent)
+      document.getElementById("theme-select").addEventListener("change", () => {
+        if (!transformed) return;
+        const themeName = document.getElementById("theme-select").value;
+        adomonitions.init({ theme: themeName });
+      });
+
+      document.getElementById("btn-reset").addEventListener("click", () => {
+        const style = document.getElementById("adomonitions-theme");
+        if (style) style.remove();
+        liveEls.forEach((el, i) => {
+          el.innerHTML = originals[i];
+        });
+        transformed = false;
+        setStatus(false);
+      });
+    </script>
+  </body>
+</html>
