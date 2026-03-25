@@ -49,8 +49,8 @@ export function scanGitHub(config: ResolvedConfig): void {
         );
       }
       wrapper.appendChild(bodyP);
-    } else if (!hasBodySiblings && inlineText) {
-      // Inline variant: text after marker with no siblings → wrap as body <p>
+    } else if (inlineText) {
+      // Inline text without <br> is always body content, not a custom title
       const bodyP = doc.createElement("p");
       bodyP.textContent = inlineText;
       wrapper.appendChild(bodyP);

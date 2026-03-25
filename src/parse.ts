@@ -71,7 +71,6 @@ export function parseGitHub(element: Element): GitHubParseResult | null {
   const title = resolveGitHubTitle(
     type,
     inlineText,
-    hasBodySiblings,
     bodyNodesAfterBr.length > 0,
   );
 
@@ -140,26 +139,25 @@ function parseGitHubMarker(p: Element): GitHubMarkerResult | null {
  * @remarks
  * Resolution rules:
  * - If there's a `<br>` with content after it AND inline text: inline text is the custom title.
- * - If there's no `<br>`, siblings exist, AND inline text: inline text is the custom title.
- * - If there's no `<br>`, no siblings, AND inline text: inline text is body (use default title).
  * - Otherwise: use the default title for the type.
+ *
+ * GitHub's alert syntax doesn't support custom titles — text after `[!TYPE]`
+ * on the same line (without a `<br>`) is body content, not a title. Only
+ * the compact `<br>` variant allows a custom title because the `<br>`
+ * explicitly separates the title from the body.
  *
  * @param type - The admonition type.
  * @param inlineText - Text found after the `[!TYPE]` marker on the same line.
- * @param hasSiblings - Whether the marker `<p>` has sibling elements.
  * @param hasBrBody - Whether content was found after a `<br>` in the marker `<p>`.
  * @returns The resolved title string.
  */
 function resolveGitHubTitle(
   type: GitHubType,
   inlineText: string,
-  hasSiblings: boolean,
   hasBrBody: boolean,
 ): string {
-  if (inlineText) {
-    if (hasBrBody || hasSiblings) {
-      return inlineText;
-    }
+  if (inlineText && hasBrBody) {
+    return inlineText;
   }
   return DEFAULT_TITLES[type];
 }

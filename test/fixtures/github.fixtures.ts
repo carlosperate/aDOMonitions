@@ -65,13 +65,14 @@ const inputVariants: GitHubFixture[] = [
     expectedRole: "note",
   },
   {
-    id: "note-custom-title-separated",
-    description: "[!NOTE] with custom title, body in separate paragraph",
+    id: "note-inline-with-siblings",
+    description:
+      "[!NOTE] with inline text and siblings — inline text is body, not title",
     input:
-      "<blockquote><p>[!NOTE] Custom Title Here</p><p>Body text.</p></blockquote>",
+      "<blockquote><p>[!NOTE] First paragraph.</p><p>Second paragraph.</p></blockquote>",
     expectedType: "note",
-    expectedTitle: "Custom Title Here",
-    expectedBody: "<p>Body text.</p>",
+    expectedTitle: "Note",
+    expectedBodyChildCount: 2,
     expectedRole: "note",
   },
 ];
