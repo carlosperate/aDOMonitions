@@ -40,7 +40,7 @@ export function scanGitHub(config: ResolvedConfig): void {
     if (bodyNodesAfterBr.length > 0) {
       const bodyP = doc.createElement("p");
       for (const node of bodyNodesAfterBr) {
-        bodyP.appendChild(node.cloneNode(true));
+        bodyP.appendChild(node);
       }
       if (bodyP.firstChild && bodyP.firstChild.nodeType === 3) {
         bodyP.firstChild.textContent = bodyP.firstChild.textContent!.replace(
@@ -56,11 +56,12 @@ export function scanGitHub(config: ResolvedConfig): void {
       wrapper.appendChild(bodyP);
     }
 
-    // Clone remaining sibling elements from the blockquote (after the marker <p>)
+    // Move remaining sibling elements from the blockquote (after the marker <p>)
     let sibling = markerP.nextElementSibling;
     while (sibling) {
-      wrapper.appendChild(sibling.cloneNode(true));
-      sibling = sibling.nextElementSibling;
+      const next = sibling.nextElementSibling;
+      wrapper.appendChild(sibling);
+      sibling = next;
     }
 
     bq.parentNode!.replaceChild(wrapper, bq);
