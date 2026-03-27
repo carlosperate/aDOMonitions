@@ -1,7 +1,13 @@
 # aDOMonitions
 
-Styled admonition callouts, converted on page load, for static site generators
+Styled admonition callouts generated on page load, for static site generators
 whose Markdown renderer doesn't support them.
+
+Checkout the [Quickstart](https://carlosperate.github.io/aDOMonitions/quickstart.html) to get up and running right away!
+
+Look at the [Demo page](https://carlosperate.github.io/aDOMonitions/demo.html) to view all the callouts and themes:
+
+![Example callout boxes](docs/img/demo-screenshot.png)
 
 ## What is this?
 

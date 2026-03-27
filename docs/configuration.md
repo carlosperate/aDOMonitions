@@ -1,3 +1,7 @@
+---
+nav_order: 2
+---
+
 # Configuration
 
 All options are optional, and passed to `init()` as an object.

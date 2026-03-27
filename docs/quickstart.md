@@ -1,3 +1,7 @@
+---
+nav_order: 1
+---
+
 # Quick Start
 
 Add these two lines to your HTML:
