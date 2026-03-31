@@ -8,6 +8,8 @@
 
 import type { ThemeName } from "../types.js";
 import core from "./core.css";
+import defaultLight from "./default-light.css";
+import defaultDark from "./default-dark.css";
 import githubLight from "./github-light.css";
 import githubDark from "./github-dark.css";
 import material from "./material.css";
@@ -17,7 +19,18 @@ import docusaurus from "./docusaurus.css";
 export const coreCSS: string = core;
 
 /**
- * Composes github-auto from the light and dark theme strings,
+ * Composes default-auto from the default light and dark theme strings,
+ * avoiding a third copy of the same color definitions in the bundle.
+ * The standalone `default-auto.css` file in `dist/themes/` is still
+ * available for users who prefer a `<link>` tag.
+ */
+const defaultAuto =
+  `@media (prefers-color-scheme: light) {\n${defaultLight}\n}\n` +
+  `@media (prefers-color-scheme: dark) {\n${defaultDark}\n}\n` +
+  defaultLight;
+
+/**
+ * Composes github-auto from the github light and dark theme strings,
  * avoiding a third copy of the same color definitions in the bundle.
  * The standalone `github-auto.css` file in `dist/themes/` is still
  * available for users who prefer a `<link>` tag.
@@ -29,6 +42,9 @@ const githubAuto =
 
 /** Map of theme names to their CSS string content (colors + optional style overrides). */
 const themes: Record<ThemeName, string> = {
+  "default-light": defaultLight,
+  "default-dark": defaultDark,
+  "default-auto": defaultAuto,
   "github-light": githubLight,
   "github-dark": githubDark,
   "github-auto": githubAuto,

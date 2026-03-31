@@ -9,7 +9,7 @@ describe("project setup", () => {
   it("can import types", async () => {
     const types = await import("../src/types.js");
     expect(types.DEFAULTS.triggerStyle).toBe("github");
-    expect(types.DEFAULTS.theme).toBe("github-light");
+    expect(types.DEFAULTS.theme).toBe("default-light");
     expect(types.DEFAULT_CLASSES.wrapper).toBe("adomonitions");
   });
 });

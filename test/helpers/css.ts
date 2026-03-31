@@ -16,6 +16,8 @@ function readCSS(filename: string): string {
 
 export const expectedCoreCSS = readCSS("core.css");
 export const expectedThemeCSS: Record<string, string> = {
+  "default-light": readCSS("default-light.css"),
+  "default-dark": readCSS("default-dark.css"),
   "github-light": readCSS("github-light.css"),
   "github-dark": readCSS("github-dark.css"),
   material: readCSS("material.css"),

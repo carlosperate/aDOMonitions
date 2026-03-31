@@ -156,6 +156,9 @@ describe("injectCSS — manual style element", () => {
 
 describe("injectCSS — all themes", () => {
   const themeNames = [
+    "default-light",
+    "default-dark",
+    "default-auto",
     "github-light",
     "github-dark",
     "github-auto",

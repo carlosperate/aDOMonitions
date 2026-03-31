@@ -32,16 +32,14 @@ Set `theme: null` to disable automatic CSS injection:
 adomonitions.init({ theme: null });
 ```
 
-Then either:
-
-1. **Use a standalone CSS file** from the npm package via `<link>`:
+Then either use a standalone CSS file from the npm package via `<link>`:
 
 ```html
 <link rel="stylesheet" href="node_modules/adomonitions/dist/themes/core.css" />
-<link rel="stylesheet" href="node_modules/adomonitions/dist/themes/github-light.css" />
+<link rel="stylesheet" href="node_modules/adomonitions/dist/themes/default-light.css" />
 ```
 
-2. **Write fully custom CSS** targeting the output classes:
+Or write fully custom CSS targeting the output classes:
 
 ```css
 .adomonitions {
@@ -59,14 +57,17 @@ Then either:
 
 The npm package `themes/` directory (or `dist/themes/` in the built project) contains individual CSS files that can be loaded independently:
 
-| File | Purpose |
-|---|---|
-| `core.css` | Structural layout (flexbox, spacing, custom property wiring) — always needed |
-| `github-light.css` | GitHub Primer light colours |
-| `github-dark.css` | GitHub Primer dark colours |
-| `github-auto.css` | Light + dark with `prefers-color-scheme` media queries + light fallback |
-| `material.css` | Material Design colours + style overrides (shadow, uppercase title) |
-| `docusaurus.css` | Docusaurus/Infima colours + style overrides (thick border, larger icons) |
+| File                | Purpose |
+|---------------------|---------|
+| `core.css`          | Structural layout (flexbox, spacing, custom property wiring) — always needed |
+| `default-light.css` | Tinted background + rounded corners, light — **default** |
+| `default-dark.css`  | Tinted background + rounded corners, dark |
+| `default-auto.css`  | Light + dark with `prefers-color-scheme` media queries + light fallback |
+| `github-light.css`  | GitHub callout style (transparent bg, no radius), light |
+| `github-dark.css`   | GitHub callout style (transparent bg, no radius), dark |
+| `github-auto.css`   | GitHub style light + dark with `prefers-color-scheme` + light fallback |
+| `material.css`      | Material Design colours + style overrides (shadow, uppercase title) |
+| `docusaurus.css`    | Docusaurus/Infima colours + style overrides (thick border, larger icons) |
 
 When using standalone files, always include `core.css` alongside a colour theme. The bundled JS themes include core automatically.
 
@@ -79,11 +80,13 @@ import "adomonitions/themes/material.css";
 
 ## Dark mode
 
-### Using `github-auto`
+### Using `default-auto` or `github-auto`
 
-The `github-auto` theme uses `prefers-color-scheme` media queries to switch between light and dark colours based on the OS setting:
+The `default-auto` and `github-auto` themes use `prefers-color-scheme` media queries to switch between light and dark colours based on the OS setting:
 
 ```js
+adomonitions.init({ theme: "default-auto" });
+// or
 adomonitions.init({ theme: "github-auto" });
 ```
 
@@ -120,10 +123,10 @@ Calling `init()` with a different theme automatically replaces the CSS — no ma
 
 ```js
 // Initial setup
-adomonitions.init({ theme: "github-light" });
+adomonitions.init({ theme: "default-light" });
 
 // Later, switch to dark
-adomonitions.init({ theme: "github-dark" });
+adomonitions.init({ theme: "default-dark" });
 ```
 
 The injected `<style>` element tracks the active theme via a `data-theme` attribute. Same-theme calls are idempotent (no DOM changes).

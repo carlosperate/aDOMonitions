@@ -1,10 +1,7 @@
 /*
- * aDOMonitions — github-auto theme (standalone)
+ * aDOMonitions — default-auto theme (colors only)
  *
- * Replicates the actual GitHub callout style with prefers-color-scheme support.
- * Transparent background, no border-radius, colored left border and title.
- *
- * Combines github-light and github-dark colors using prefers-color-scheme
+ * Combines default-light and default-dark colors using prefers-color-scheme
  * media queries, with light-mode fallback for browsers without support.
  *
  * Colors sourced from GitHub's Primer design system.
@@ -14,34 +11,35 @@
  * info/danger reuse note/caution colors for cross-style compatibility.
  */
 
-/* Shared: transparent background + no border-radius */
-.adomonitions {
-  --adomonitions-bg: transparent;
-  border-radius: 0;
-}
-
 /* Light mode */
 @media (prefers-color-scheme: light) {
   .adomonitions-note {
     --adomonitions-color: #1f6feb;
+    --adomonitions-bg: #ddf4ff;
   }
   .adomonitions-tip {
     --adomonitions-color: #1a7f37;
+    --adomonitions-bg: #dafbe1;
   }
   .adomonitions-important {
     --adomonitions-color: #8250df;
+    --adomonitions-bg: #fbefff;
   }
   .adomonitions-warning {
     --adomonitions-color: #9a6700;
+    --adomonitions-bg: #fff8c5;
   }
   .adomonitions-caution {
     --adomonitions-color: #cf222e;
+    --adomonitions-bg: #ffebe9;
   }
   .adomonitions-info {
     --adomonitions-color: #1f6feb;
+    --adomonitions-bg: #ddf4ff;
   }
   .adomonitions-danger {
     --adomonitions-color: #cf222e;
+    --adomonitions-bg: #ffebe9;
   }
 }
 
@@ -52,46 +50,60 @@
   }
   .adomonitions-note {
     --adomonitions-color: #4493f8;
+    --adomonitions-bg: #121d2f;
   }
   .adomonitions-tip {
     --adomonitions-color: #3fb950;
+    --adomonitions-bg: #12261e;
   }
   .adomonitions-important {
     --adomonitions-color: #ab7df8;
+    --adomonitions-bg: #211f36;
   }
   .adomonitions-warning {
     --adomonitions-color: #d29922;
+    --adomonitions-bg: #272115;
   }
   .adomonitions-caution {
     --adomonitions-color: #f85149;
+    --adomonitions-bg: #2d1215;
   }
   .adomonitions-info {
     --adomonitions-color: #4493f8;
+    --adomonitions-bg: #121d2f;
   }
   .adomonitions-danger {
     --adomonitions-color: #f85149;
+    --adomonitions-bg: #2d1215;
   }
 }
 
 /* Fallback when no preference is set (light) */
 .adomonitions-note {
   --adomonitions-color: #1f6feb;
+  --adomonitions-bg: #ddf4ff;
 }
 .adomonitions-tip {
   --adomonitions-color: #1a7f37;
+  --adomonitions-bg: #dafbe1;
 }
 .adomonitions-important {
   --adomonitions-color: #8250df;
+  --adomonitions-bg: #fbefff;
 }
 .adomonitions-warning {
   --adomonitions-color: #9a6700;
+  --adomonitions-bg: #fff8c5;
 }
 .adomonitions-caution {
   --adomonitions-color: #cf222e;
+  --adomonitions-bg: #ffebe9;
 }
 .adomonitions-info {
   --adomonitions-color: #1f6feb;
+  --adomonitions-bg: #ddf4ff;
 }
 .adomonitions-danger {
   --adomonitions-color: #cf222e;
+  --adomonitions-bg: #ffebe9;
 }

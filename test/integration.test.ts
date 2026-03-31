@@ -42,11 +42,11 @@ describe("init — defaults", () => {
     expect(style!.textContent).toContain(expectedCoreCSS);
   });
 
-  it("uses github-light as the default theme", () => {
+  it("uses default-light as the default theme", () => {
     init();
 
     const style = document.getElementById(STYLE_ID);
-    expect(style!.textContent).toContain(expectedThemeCSS["github-light"]);
+    expect(style!.textContent).toContain(expectedThemeCSS["default-light"]);
   });
 
   it("core CSS comes before theme CSS in the injected style", () => {
@@ -54,7 +54,7 @@ describe("init — defaults", () => {
 
     const content = document.getElementById(STYLE_ID)!.textContent!;
     const coreIndex = content.indexOf(expectedCoreCSS);
-    const themeIndex = content.indexOf(expectedThemeCSS["github-light"]);
+    const themeIndex = content.indexOf(expectedThemeCSS["default-light"]);
     expect(coreIndex).toBeGreaterThanOrEqual(0);
     expect(themeIndex).toBeGreaterThan(coreIndex);
   });
@@ -150,6 +150,9 @@ describe("init — theme: null", () => {
 
 describe("init — theme selection", () => {
   const themeNames = [
+    "default-light",
+    "default-dark",
+    "default-auto",
     "github-light",
     "github-dark",
     "github-auto",

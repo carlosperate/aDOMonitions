@@ -19,6 +19,9 @@ export interface ADOMonitionsClasses {
 
 /** Available bundled themes. Set to null to bring your own CSS. */
 export type ThemeName =
+  | "default-light"
+  | "default-dark"
+  | "default-auto"
   | "github-light"
   | "github-dark"
   | "github-auto"
@@ -55,7 +58,7 @@ export const DEFAULT_CLASSES: Required<ADOMonitionsClasses> = {
 /** Default configuration values. */
 export const DEFAULTS = {
   triggerStyle: "github" as const,
-  theme: "github-light" as ThemeName,
+  theme: "default-light" as ThemeName,
   classes: DEFAULT_CLASSES,
 };
 

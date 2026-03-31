@@ -16,7 +16,7 @@ Add these two lines to your HTML:
 That's it. By default this:
 
 - Scans `document.body` for GitHub-style `[!TYPE]` blockquotes
-- Injects the `github-light` theme CSS into `<head>`
+- Injects the `default-light` theme CSS into `<head>`
 - Transforms matching blockquotes into styled callout boxes
 
 For the complete description of all options, see the [Configuration reference](configuration.md).
@@ -43,13 +43,12 @@ Five bundled themes are available. The JS bundle includes all of them — just p
 </script>
 ```
 
-| Theme | Description |
-|---|---|
-| `github-light` | GitHub Primer colours (light) — **default** |
-| `github-dark` | GitHub Primer colours (dark) |
-| `github-auto` | Follows OS light/dark preference |
-| `material` | MkDocs Material style (shadow, uppercase title) |
-| `docusaurus` | Docusaurus/Infima style (thick border, heavier title) |
+| Theme           | Description |
+|-----------------|-------------|
+| `default-light` <br> `default-dark` <br> `default-auto` | Tinted background with rounded corners, **default** |
+| `github-light`  <br> `github-dark`  <br> `github-auto`  | GitHub callout style (transparent bg, left border highlight), light |
+| `material`      | MkDocs Material style (shadow, uppercase title) |
+| `docusaurus`    | Docusaurus/Infima style (thick border, heavier title) |
 
 The theme controls colours and visual style only — both trigger styles produce the same output HTML.
 
@@ -94,7 +93,7 @@ A complete HTML page with GitHub-style admonitions:
   <script>
     adomonitions.init({
       root: "#content",
-      theme: "github-light",
+      theme: "default-light",
     });
   </script>
 </body>

@@ -102,6 +102,15 @@
         border-radius: 6px;
         padding: 1rem;
         overflow: auto;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .panel.panel-dark {
+        background: #21262e;
+        border-color: #30363d;
+        color: #e6edf3;
       }
       .panel-header {
         font-size: 0.75rem;
@@ -110,6 +119,9 @@
         color: #656d76;
         letter-spacing: 0.05em;
         margin-bottom: 0.5rem;
+      }
+      .panel.panel-dark .panel-header {
+        color: #8b949e;
       }
       pre {
         background: #f6f8fa;
@@ -148,9 +160,9 @@
   <body>
     <h1>aDOMonitions <small>before / after demo</small></h1>
     <p>
-      Each row shows three columns: the original <strong>Markdown</strong>
-      source, the <strong>Generated HTML</strong> that a static site generator
-      would produce without admonition support, <br>
+      Each row shows three columns: the original
+      <strong>Markdown</strong> source, the <strong>Generated HTML</strong> that
+      a static site generator would produce without admonition support, <br />
       and the <strong>Live output</strong>
       after aDOMonitions transforms that HTML into a styled callout.
     </p>
@@ -162,7 +174,10 @@
     <div class="controls">
       <label for="theme-select">Theme:</label>
       <select id="theme-select">
-        <option value="github-light" selected>github-light</option>
+        <option value="default-light" selected>default-light</option>
+        <option value="default-dark">default-dark</option>
+        <option value="default-auto">default-auto</option>
+        <option value="github-light">github-light</option>
         <option value="github-dark">github-dark</option>
         <option value="github-auto">github-auto</option>
         <option value="material">material</option>
@@ -499,14 +514,27 @@ to bring your own CSS.&lt;/p&gt;
     <script>
       // Snapshot original HTML for reset
       const liveEls = document.querySelectorAll(".live");
+      const livePanels = document.querySelectorAll(".live").length
+        ? Array.from(document.querySelectorAll(".live")).map((el) =>
+            el.closest(".panel"),
+          )
+        : [];
       const originals = Array.from(liveEls).map((el) => el.innerHTML);
       const statusEls = document.querySelectorAll(".status");
       let transformed = false;
+
+      const darkThemes = new Set(["default-dark", "github-dark"]);
 
       function setStatus(isTransformed) {
         statusEls.forEach((el) => {
           el.textContent = isTransformed ? "— transformed" : "— raw";
           el.className = "status " + (isTransformed ? "transformed" : "raw");
+        });
+      }
+
+      function setLivePanelDark(isDark) {
+        livePanels.forEach((panel) => {
+          if (panel) panel.classList.toggle("panel-dark", isDark);
         });
       }
 
@@ -528,6 +556,7 @@ to bring your own CSS.&lt;/p&gt;
             theme: themeName,
           });
         });
+        setLivePanelDark(darkThemes.has(themeName));
         transformed = true;
         setStatus(true);
       }
@@ -544,8 +573,9 @@ to bring your own CSS.&lt;/p&gt;
 
       // Switch theme live — just call init() once to swap CSS (scanning is idempotent)
       document.getElementById("theme-select").addEventListener("change", () => {
-        if (!transformed) return;
         const themeName = document.getElementById("theme-select").value;
+        setLivePanelDark(darkThemes.has(themeName));
+        if (!transformed) return;
         adomonitions.init({ theme: themeName });
       });
 
@@ -555,6 +585,7 @@ to bring your own CSS.&lt;/p&gt;
         liveEls.forEach((el, i) => {
           el.innerHTML = originals[i];
         });
+        setLivePanelDark(false);
         transformed = false;
         setStatus(false);
       });

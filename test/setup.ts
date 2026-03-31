@@ -13,10 +13,17 @@ function readCSS(filename: string): string {
 }
 
 const coreCSS = readCSS("core.css");
+const defaultLight = readCSS("default-light.css");
+const defaultDark = readCSS("default-dark.css");
 const githubLight = readCSS("github-light.css");
 const githubDark = readCSS("github-dark.css");
 const materialCSS = readCSS("material.css");
 const docusaurusCSS = readCSS("docusaurus.css");
+
+const defaultAuto =
+  `@media (prefers-color-scheme: light) {\n${defaultLight}\n}\n` +
+  `@media (prefers-color-scheme: dark) {\n${defaultDark}\n}\n` +
+  defaultLight;
 
 const githubAuto =
   `@media (prefers-color-scheme: light) {\n${githubLight}\n}\n` +
@@ -24,6 +31,9 @@ const githubAuto =
   githubLight;
 
 const themes: Record<string, string> = {
+  "default-light": defaultLight,
+  "default-dark": defaultDark,
+  "default-auto": defaultAuto,
   "github-light": githubLight,
   "github-dark": githubDark,
   "github-auto": githubAuto,

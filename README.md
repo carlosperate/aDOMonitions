@@ -78,15 +78,14 @@ Check out the [Quick Start guide](docs/quickstart.md) for more examples.
 
 ## Themes
 
-Five bundled themes, injected automatically as a `<style>` tag:
+Eight bundled themes, injected automatically as a `<style>` tag:
 
-| Theme | Description |
-|---|---|
-| `github-light` | GitHub Primer colours (light) — **default** |
-| `github-dark` | GitHub Primer colours (dark) |
-| `github-auto` | Light/dark via `prefers-color-scheme` media query |
-| `material` | MkDocs Material style (shadow, uppercase title, accent border) |
-| `docusaurus` | Docusaurus/Infima style (thick left border, heavier title) |
+| Theme           | Description |
+|-----------------|-------------|
+| `default-light` <br> `default-dark` <br> `default-auto` | Tinted background with rounded corners, **default** |
+| `github-light`  <br> `github-dark`  <br> `github-auto`  | GitHub callout style (transparent bg, left border highlight), light |
+| `material`      | MkDocs Material style (shadow, uppercase title) |
+| `docusaurus`    | Docusaurus/Infima style (thick border, heavier title) |
 
 Set `theme: null` to skip CSS injection and bring your own styles. Standalone CSS files are also available at `dist/themes/` for use via `<link>` tags.
 

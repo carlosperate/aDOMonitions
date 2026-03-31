@@ -1,8 +1,7 @@
 /*
- * aDOMonitions — github-light theme (colors only)
+ * aDOMonitions — default-light theme (colors only)
  *
- * Replicates the actual GitHub callout style in light mode:
- * transparent background, no border-radius, colored left border and title.
+ * A tinted-background variant with rounded corners.
  * Colors sourced from GitHub's Primer design system (light mode alerts).
  * See: https://github.com/primer/primitives
  *      https://primer.style/foundations/color
@@ -10,29 +9,31 @@
  * info/danger reuse note/caution colors for cross-style compatibility.
  */
 
-.adomonitions {
-  --adomonitions-bg: transparent;
-  border-radius: 0;
-}
-
 .adomonitions-note {
   --adomonitions-color: #1f6feb;
+  --adomonitions-bg: #ddf4ff;
 }
 .adomonitions-tip {
   --adomonitions-color: #1a7f37;
+  --adomonitions-bg: #dafbe1;
 }
 .adomonitions-important {
   --adomonitions-color: #8250df;
+  --adomonitions-bg: #fbefff;
 }
 .adomonitions-warning {
   --adomonitions-color: #9a6700;
+  --adomonitions-bg: #fff8c5;
 }
 .adomonitions-caution {
   --adomonitions-color: #cf222e;
+  --adomonitions-bg: #ffebe9;
 }
 .adomonitions-info {
   --adomonitions-color: #1f6feb;
+  --adomonitions-bg: #ddf4ff;
 }
 .adomonitions-danger {
   --adomonitions-color: #cf222e;
+  --adomonitions-bg: #ffebe9;
 }

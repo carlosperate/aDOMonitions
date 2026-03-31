@@ -13,7 +13,7 @@ All options are optional, and passed to `init()` as an object.
   adomonitions.init({
     root: "#content",
     triggerStyle: "github",
-    theme: "github-light",
+    theme: "default-light",
     classes: {
       wrapper: "adomonitions",
       title: "adomonitions-title",
@@ -78,8 +78,8 @@ adomonitions.init({ triggerStyle: "docusaurus" });
 
 ### `theme`
 
-**Type:** `"github-light" | "github-dark" | "github-auto" | "material" | "docusaurus" | null`
-**Default:** `"github-light"`
+**Type:** `"default-light" | "default-dark" | "default-auto" | "github-light" | "github-dark" | "github-auto" | "material" | "docusaurus" | null`
+**Default:** `"default-light"`
 
 Selects the bundled CSS theme to inject into `<head>` as a `<style>` element.
 
