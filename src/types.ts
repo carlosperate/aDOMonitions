@@ -1,11 +1,12 @@
-/** Admonition type identifiers for the GitHub trigger style. */
-export type GitHubType = "note" | "tip" | "important" | "warning" | "caution";
-
-/** Admonition type identifiers for the Docusaurus trigger style. */
-export type DocusaurusType = "note" | "tip" | "info" | "warning" | "danger";
-
-/** All possible admonition type identifiers. */
-export type AdmonitionType = GitHubType | DocusaurusType;
+/** All admonition type identifiers. Supported by both trigger styles. */
+export type AdmonitionType =
+  | "note"
+  | "tip"
+  | "important"
+  | "info"
+  | "warning"
+  | "caution"
+  | "danger";
 
 /** Configurable CSS class names for the output HTML. */
 export interface ADOMonitionsClasses {

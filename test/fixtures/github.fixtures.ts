@@ -122,6 +122,22 @@ const allTypes: GitHubFixture[] = [
     expectedTitle: "Caution",
     expectedRole: "alert",
   },
+  {
+    id: "type-info",
+    description: "[!INFO] type detection",
+    input: "<blockquote><p>[!INFO]</p><p>Content.</p></blockquote>",
+    expectedType: "info",
+    expectedTitle: "Info",
+    expectedRole: "note",
+  },
+  {
+    id: "type-danger",
+    description: "[!DANGER] type detection",
+    input: "<blockquote><p>[!DANGER]</p><p>Content.</p></blockquote>",
+    expectedType: "danger",
+    expectedTitle: "Danger",
+    expectedRole: "alert",
+  },
 ];
 
 // ---------------------------------------------------------------------------

@@ -80,6 +80,24 @@ const allTypes: DocusaurusFixture[] = [
     expectedBodyChildCount: 1,
     expectedRole: "alert",
   },
+  {
+    id: "type-important",
+    description: ":::important basic admonition",
+    input: "<p>:::important</p><p>Important content here.</p><p>:::</p>",
+    expectedType: "important",
+    expectedTitle: "Important",
+    expectedBodyChildCount: 1,
+    expectedRole: "note",
+  },
+  {
+    id: "type-caution",
+    description: ":::caution basic admonition",
+    input: "<p>:::caution</p><p>Caution content here.</p><p>:::</p>",
+    expectedType: "caution",
+    expectedTitle: "Caution",
+    expectedBodyChildCount: 1,
+    expectedRole: "alert",
+  },
 ];
 
 // ---------------------------------------------------------------------------

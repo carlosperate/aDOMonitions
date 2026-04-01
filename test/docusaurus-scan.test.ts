@@ -94,7 +94,9 @@ describe("scanDocusaurus — positive transforms", () => {
           const text = p.textContent?.trim() ?? "";
           // No remaining opening markers or bare :::
           if (p.closest("[data-adomonitions]")) continue; // skip inside the output
-          expect(text).not.toMatch(/^:::(note|tip|info|warning|danger)/i);
+          expect(text).not.toMatch(
+            /^:::(note|tip|important|info|warning|caution|danger)/i,
+          );
           expect(text).not.toBe(":::");
         }
       });

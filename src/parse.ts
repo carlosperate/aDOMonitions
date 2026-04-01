@@ -8,7 +8,7 @@
  * @module
  */
 
-import type { AdmonitionType, GitHubType, DocusaurusType } from "./types.js";
+import type { AdmonitionType } from "./types.js";
 import { DEFAULT_TITLES } from "./types.js";
 
 // ---------------------------------------------------------------------------
@@ -36,7 +36,7 @@ export interface ParsedAdmonition {
  * Leading whitespace is tolerated. Case-insensitive.
  */
 const GITHUB_MARKER_RE =
-  /^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(.*)/i;
+  /^\s*\[!(NOTE|TIP|IMPORTANT|INFO|WARNING|CAUTION|DANGER)\]\s*(.*)/i;
 
 /** Result of parsing a GitHub-style `[!TYPE]` marker from a `<blockquote>`. */
 export interface GitHubParseResult {
@@ -90,7 +90,7 @@ export function parseGitHub(element: Element): GitHubParseResult | null {
 /** Result of parsing the marker text from a single `<p>` element. */
 interface GitHubMarkerResult {
   /** The detected admonition type (lowercased). */
-  type: GitHubType;
+  type: AdmonitionType;
   /** Text after `[!TYPE]` on the same line (before any `<br>`). May be empty. */
   inlineText: string;
   /** DOM nodes that appear after a `<br>` in the same `<p>` (compact variant). */
@@ -127,7 +127,7 @@ function parseGitHubMarker(p: Element): GitHubMarkerResult | null {
   if (!match) return null;
 
   return {
-    type: match[1].toLowerCase() as GitHubType,
+    type: match[1].toLowerCase() as AdmonitionType,
     inlineText: match[2].trim(),
     bodyNodesAfterBr,
   };
@@ -152,7 +152,7 @@ function parseGitHubMarker(p: Element): GitHubMarkerResult | null {
  * @returns The resolved title string.
  */
 function resolveGitHubTitle(
-  type: GitHubType,
+  type: AdmonitionType,
   inlineText: string,
   hasBrBody: boolean,
 ): string {
@@ -167,7 +167,8 @@ function resolveGitHubTitle(
 // ---------------------------------------------------------------------------
 
 /** Matches `:::type` with optional custom title. Case-insensitive. */
-const DOCUSAURUS_OPEN_RE = /^:::(note|tip|info|warning|danger)(?:\s+(.+))?$/i;
+const DOCUSAURUS_OPEN_RE =
+  /^:::(note|tip|important|info|warning|caution|danger)(?:\s+(.+))?$/i;
 
 /** Matches the closing `:::` marker (exactly, no extra text). */
 const DOCUSAURUS_CLOSE_RE = /^:::$/;
@@ -200,7 +201,7 @@ export function parseDocusaurusFence(
   const match = DOCUSAURUS_OPEN_RE.exec(text);
   if (!match) return null;
 
-  const type = match[1].toLowerCase() as DocusaurusType;
+  const type = match[1].toLowerCase() as AdmonitionType;
   const customTitle = match[2]?.trim() || null;
 
   const bodyElements: Element[] = [];

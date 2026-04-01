@@ -52,6 +52,8 @@ Throws an error if the selector matches no element.
 
 Selects which marker syntax to scan.
 
+Both styles recognise all seven admonition types: `note`, `tip`, `important`, `info`, `warning`, `caution`, `danger`.
+
 - **`"github"`** — Scans `<blockquote>` elements for `[!TYPE]` markers in the first `<p>`. This is the typical HTML generated when using the Admonition syntax GitHub uses in Markdown.
   ```markdown
   > [!WARNING]
