@@ -1,5 +1,5 @@
 ---
-nav_order: 2
+nav_order: 1
 ---
 
 # Configuration
@@ -30,9 +30,9 @@ All options are optional, and passed to `init()` as an object.
 **Type:** `string | Element`
 **Default:** `document.body`
 
-Scopes DOM scanning to a specific element. Accepts a CSS selector string or a direct Element reference. Only admonitions inside this element will be transformed.
+Limits the scan to a specific element. Takes a CSS selector string or an Element reference. Only admonitions inside this element are transformed.
 
-Use this to avoid scanning the entire DOM for better performance.
+Useful on large pages where you don't want to scan the entire DOM.
 
 ```js
 // CSS selector
@@ -50,7 +50,7 @@ Throws an error if the selector matches no element.
 **Type:** `"github" | "docusaurus"`
 **Default:** `"github"`
 
-Selects which marker syntax to scan.
+Selects which marker syntax to look for.
 
 Both styles recognise all seven admonition types: `note`, `tip`, `important`, `info`, `warning`, `caution`, `danger`.
 
@@ -83,9 +83,9 @@ adomonitions.init({ triggerStyle: "docusaurus" });
 **Type:** `"default-light" | "default-dark" | "default-auto" | "github-light" | "github-dark" | "github-auto" | "material" | "docusaurus" | null`
 **Default:** `"default-light"`
 
-Selects the bundled CSS theme to inject into `<head>` as a `<style>` element.
+Sets the CSS theme to inject into `<head>` as a `<style>` element.
 
-Set to `null` to skip CSS injection entirely — useful when loading a standalone CSS file via `<link>` tag or providing custom styles.
+Set to `null` to skip CSS injection entirely, useful when loading a standalone CSS file via `<link>` tag or providing custom styles.
 
 ```html
 <script src="https://unpkg.com/adomonitions/dist/adomonitions.umd.min.js"></script>
@@ -113,7 +113,7 @@ If you manually add a `<style id="adomonitions-theme">` element (without a `data
 **Type:** `{ wrapper?: string; title?: string; icon?: string }`
 **Default:** `{ wrapper: "adomonitions", title: "adomonitions-title", icon: "adomonitions-icon" }`
 
-Overrides the CSS class names applied to output elements. The wrapper class is also used as a prefix for the type-specific class (e.g. `adomonitions-warning`).
+Overrides the CSS class names on output elements. The wrapper class is also used as a prefix for the type-specific class (e.g. `adomonitions-warning`).
 
 ```js
 adomonitions.init({

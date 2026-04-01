@@ -19,7 +19,7 @@ That's it. By default this:
 - Injects the `default-light` theme CSS into `<head>`
 - Transforms matching blockquotes into styled callout boxes
 
-For the complete description of all options, see the [Configuration reference](configuration.md).
+For all options, see the [Configuration reference](configuration.md).
 
 ## Docusaurus-style fences
 
@@ -116,5 +116,5 @@ init();
 
 ## Next steps
 
-- [Configuration reference](configuration.md) — all options explained
-- [Customisation guide](customization.md) — CSS overrides, dark mode, custom icons
+- [Configuration reference](configuration.md): All options explained
+- [Customisation guide](customization.md): CSS overrides, dark mode, custom icons

@@ -33,13 +33,13 @@ export function injectCSS(theme: ThemeName): void {
   const existing = document.getElementById(STYLE_ID);
 
   if (existing) {
-    // Manually added style (no data-theme attr) — don't touch it
+    // Manually added style (no data-theme attr), don't touch it
     if (!existing.hasAttribute(THEME_ATTR)) return;
 
-    // Same theme already active — nothing to do
+    // Same theme already active, nothing to do
     if (existing.getAttribute(THEME_ATTR) === theme) return;
 
-    // Different theme — replace content
+    // Different theme, replace content
     existing.textContent = coreCSS + "\n" + getThemeCSS(theme);
     existing.setAttribute(THEME_ATTR, theme);
     return;

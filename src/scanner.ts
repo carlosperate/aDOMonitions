@@ -86,7 +86,7 @@ export function scanGitHub(config: ResolvedConfig): void {
  * @param config - Resolved configuration with root element and class names.
  */
 export function scanDocusaurus(config: ResolvedConfig): void {
-  // Snapshot <p> elements — the DOM will be mutated during iteration.
+  // Snapshot <p> elements,  the DOM will be mutated during iteration.
   const paragraphs = Array.from(config.root.querySelectorAll("p"));
   const consumed = new WeakSet<Element>();
 

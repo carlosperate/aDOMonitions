@@ -1,5 +1,5 @@
 ---
-nav_order: 3
+nav_order: 2
 ---
 
 # Customisation
@@ -59,8 +59,8 @@ The npm package `themes/` directory (or `dist/themes/` in the built project) con
 
 | File                | Purpose |
 |---------------------|---------|
-| `core.css`          | Structural layout (flexbox, spacing, custom property wiring) — always needed |
-| `default-light.css` | Tinted background + rounded corners, light — **default** |
+| `core.css`          | Structural layout (flexbox, spacing, custom property wiring), always needed |
+| `default-light.css` | Tinted background + rounded corners, light,  **default** |
 | `default-dark.css`  | Tinted background + rounded corners, dark |
 | `default-auto.css`  | Light + dark with `prefers-color-scheme` media queries + light fallback |
 | `github-light.css`  | GitHub callout style (transparent bg, no radius), light |

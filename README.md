@@ -3,7 +3,7 @@
 Styled admonition callouts generated on page load, for static site generators
 whose Markdown renderer doesn't support them.
 
-Checkout the [Quickstart](https://carlosperate.github.io/aDOMonitions/quickstart.html) to get up and running right away!
+Check out the [Quickstart](https://carlosperate.github.io/aDOMonitions/quickstart.html) to get up and running right away!
 
 Look at the [Demo page](https://carlosperate.github.io/aDOMonitions/demo.html) to view all the callouts and themes:
 
@@ -73,12 +73,12 @@ Or load via a `<script>` tag (UMD):
 </script>
 ```
 
-Check out the [Quick Start guide](docs/quickstart.md) for more examples.
+Check out the [Quick Start guide](https://carlosperate.github.io/aDOMonitions/quickstart.html) for more examples.
 
 
 ## Themes
 
-Eight bundled themes, selected option is injected automatically as a `<style>` tag:
+Eight bundled themes. The active theme is injected automatically as a `<style>` tag:
 
 | Theme           | Description |
 |-----------------|-------------|
@@ -91,9 +91,9 @@ Set `theme: null` to skip CSS injection and bring your own styles. Standalone CS
 
 ## Documentation
 
-- [Quick start](docs/quickstart.md) — install, first call, full HTML example
-- [Configuration reference](docs/configuration.md) — all options with defaults and examples
-- [Customisation guide](docs/customization.md) — CSS overrides, custom icons, BYO themes, dark mode
+- [Quick start](https://carlosperate.github.io/aDOMonitions/quickstart.html): Install and init, full HTML example
+- [Configuration reference](https://carlosperate.github.io/aDOMonitions/config/configuration.html): All options with defaults and examples
+- [Customisation guide](https://carlosperate.github.io/aDOMonitions/config/customization.html): CSS overrides, custom icons, BYO themes, dark mode
 
 ## License & Acknowledgements
 

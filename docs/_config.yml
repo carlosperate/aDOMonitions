@@ -2,3 +2,9 @@ title: aDOMonitions
 description: Styled admonition callouts, converted on page load.
 plugins: [jekyll-remote-theme]
 remote_theme: carlosperate/jekyll-theme-rtd
+
+# Theme options
+nav_external_links:
+  - section: Demos
+  - title: Live demo page
+    url: 'https://carlosperate.github.io/aDOMonitions/demo.html'
