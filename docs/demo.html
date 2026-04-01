@@ -221,6 +221,33 @@
     </div>
 
     <div class="example">
+      <span class="example-label">Info</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!INFO]
+&gt; Here is some additional context.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!INFO]&lt;/p&gt;
+  &lt;p&gt;Here is some additional context.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>[!INFO]</p>
+            <p>Here is some additional context.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
       <span class="example-label"
         >Tip (separated — body in next &lt;p&gt;)</span
       >
@@ -343,6 +370,33 @@
       </div>
     </div>
 
+    <div class="example">
+      <span class="example-label">Danger</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!DANGER]
+&gt; This will destroy your database.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!DANGER]&lt;/p&gt;
+  &lt;p&gt;This will destroy your database.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
+            <p>[!DANGER]</p>
+            <p>This will destroy your database.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
     <!-- ================================================================== -->
     <h2>Docusaurus-style fences</h2>
     <!-- ================================================================== -->
@@ -406,6 +460,59 @@ Admonitions support `inline code` and [links](#).
     </div>
 
     <div class="example">
+      <span class="example-label">Tip</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::tip
+Use `theme: null` to bring your own CSS.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::tip&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;theme: null&lt;/code&gt;
+to bring your own CSS.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::tip</p>
+          <p>Use <code>theme: null</code> to bring your own CSS.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Important</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::important
+This is a critical piece of information.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::important&lt;/p&gt;
+&lt;p&gt;This is a critical piece of information.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::important</p>
+          <p>This is a critical piece of information.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
       <span class="example-label">Warning (multi-element body)</span>
       <div class="panel">
         <div class="panel-header">Markdown</div>
@@ -443,6 +550,32 @@ Be careful with the following:
     </div>
 
     <div class="example">
+      <span class="example-label">Caution</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">:::caution
+Proceed carefully — this cannot be undone.
+:::</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;p&gt;:::caution&lt;/p&gt;
+&lt;p&gt;Proceed carefully — this cannot be undone.&lt;/p&gt;
+&lt;p&gt;:::&lt;/p&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live docu">
+          <p>:::caution</p>
+          <p>Proceed carefully — this cannot be undone.</p>
+          <p>:::</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
       <span class="example-label">Danger</span>
       <div class="panel">
         <div class="panel-header">Markdown</div>
@@ -464,33 +597,6 @@ Proceed with extreme caution.&lt;/p&gt;
         <div class="live docu">
           <p>:::danger</p>
           <p>This will destroy your database. Proceed with extreme caution.</p>
-          <p>:::</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="example">
-      <span class="example-label">Tip</span>
-      <div class="panel">
-        <div class="panel-header">Markdown</div>
-        <pre><code class="language-markdown">:::tip
-Use `theme: null` to bring your own CSS.
-:::</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-header">Generated HTML</div>
-        <pre><code class="language-html">&lt;p&gt;:::tip&lt;/p&gt;
-&lt;p&gt;Use &lt;code&gt;theme: null&lt;/code&gt;
-to bring your own CSS.&lt;/p&gt;
-&lt;p&gt;:::&lt;/p&gt;</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-header">
-          Live output <span class="status">— raw</span>
-        </div>
-        <div class="live docu">
-          <p>:::tip</p>
-          <p>Use <code>theme: null</code> to bring your own CSS.</p>
           <p>:::</p>
         </div>
       </div>

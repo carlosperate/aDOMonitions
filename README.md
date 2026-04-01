@@ -95,6 +95,14 @@ Set `theme: null` to skip CSS injection and bring your own styles. Standalone CS
 - [Configuration reference](docs/configuration.md) — all options with defaults and examples
 - [Customisation guide](docs/customization.md) — CSS overrides, custom icons, BYO themes, dark mode
 
-## License
+## License & Acknowledgements
 
-[MIT](LICENSE)
+[MIT](LICENSE) licensed.
+
+Icons are inline SVGs from [GitHub Octicons](https://primer.style/foundations/icons), MIT licensed (see [LICENSE-THIRD-PARTY](LICENSE-THIRD-PARTY)).
+
+The bundled themes are inspired by and styled after the admonition designs of:
+
+- **[GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)** — alert syntax and visual style; colours from the [Primer design system](https://primer.style/foundations/color)
+- **[MkDocs Material](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)** — admonition design; colours from the [Material Design palette](https://m2.material.io/design/color/the-color-system.html)
+- **[Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)** — admonition fence syntax and visual style; colours from the [Infima CSS framework](https://infima.dev/)

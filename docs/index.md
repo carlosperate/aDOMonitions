@@ -8,9 +8,9 @@ nav_exclude: true
 Styled admonition callouts generated on page load, for static site generators
 whose Markdown renderer doesn't support them.
 
-Checkout the [Quickstart](docs/quickstart.md) to get up and running right away!
+Check out the [Quickstart](docs/quickstart.md) to get started right away!
 
-Look at the [Demo page](demo.html) to view all the callouts and themes.
+See the [demo page](demo.html) for all callout types and themes.
 
 ![Example callout boxes](img/demo-screenshot.png)
 
@@ -19,7 +19,7 @@ Look at the [Demo page](demo.html) to view all the callouts and themes.
 This JavaScript library scans the DOM for admonition markers in HTML generated
 by a static site generator without built-in admonition support.
 
-Admonitions are highlighted callout boxes — "Note", "Warning", "Tip", etc —
+Admonitions are highlighted callout boxes ("Note", "Warning", "Tip", etc.)
 used to draw attention to important content.
 Normally Markdown renderers only support these via build-time plugins,
 so without them the markers end up as plain text in the HTML.
@@ -63,10 +63,10 @@ Running aDOMonitions transforms it into a styled callout box:
 
 ## Features
 
-- **Zero dependencies** — single script tag, no build step required
-- **Two trigger styles** — GitHub (`[!TYPE]` blockquotes) and Docusaurus (`:::type` fences)
-- **Five bundled themes** — `github-light`, `github-dark`, `github-auto`, `material`, `docusaurus`
-- **Accessible** — ARIA roles and labels on every callout
-- **Scoped scanning** — target a specific container instead of the whole page
-- **BYO CSS** — skip the built-in themes and use your own existing or new styles
-- **ESM and UMD** — works with bundlers or a plain `<script>` tag
+- **Zero dependencies**, single script tag, no build step required
+- **Two trigger styles**, GitHub (`[!TYPE]` blockquotes) and Docusaurus (`:::type` fences)
+- **Five bundled themes**, `github-light`, `github-dark`, `github-auto`, `material`, `docusaurus`
+- **Accessible**, ARIA roles and labels on every callout
+- **Scoped scanning**, target a specific container instead of the whole page
+- **BYO CSS**, skip the built-in themes and use your own existing or new styles
+- **ESM and UMD**, works with bundlers or a plain `<script>` tag

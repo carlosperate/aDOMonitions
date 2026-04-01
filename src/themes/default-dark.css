@@ -6,7 +6,7 @@
  * See: https://github.com/primer/primitives
  *      https://primer.style/foundations/color
  *
- * info/danger reuse note/caution colors for cross-style compatibility.
+ * danger reuses caution colors for cross-style compatibility.
  */
 
 .adomonitions {
@@ -14,8 +14,8 @@
 }
 
 .adomonitions-note {
-  --adomonitions-color: #4493f8;
-  --adomonitions-bg: #121d2f;
+  --adomonitions-color: #34c4d8;
+  --adomonitions-bg: #0a2028;
 }
 .adomonitions-tip {
   --adomonitions-color: #3fb950;

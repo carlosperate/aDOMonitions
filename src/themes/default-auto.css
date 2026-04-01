@@ -8,14 +8,14 @@
  * See: https://github.com/primer/primitives
  *      https://primer.style/foundations/color
  *
- * info/danger reuse note/caution colors for cross-style compatibility.
+ * danger reuses caution colors for cross-style compatibility.
  */
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
   .adomonitions-note {
-    --adomonitions-color: #1f6feb;
-    --adomonitions-bg: #ddf4ff;
+    --adomonitions-color: #1a7a8a;
+    --adomonitions-bg: #d0f0f5;
   }
   .adomonitions-tip {
     --adomonitions-color: #1a7f37;
@@ -49,8 +49,8 @@
     color: #e6edf3;
   }
   .adomonitions-note {
-    --adomonitions-color: #4493f8;
-    --adomonitions-bg: #121d2f;
+    --adomonitions-color: #34c4d8;
+    --adomonitions-bg: #0a2028;
   }
   .adomonitions-tip {
     --adomonitions-color: #3fb950;
@@ -80,8 +80,8 @@
 
 /* Fallback when no preference is set (light) */
 .adomonitions-note {
-  --adomonitions-color: #1f6feb;
-  --adomonitions-bg: #ddf4ff;
+  --adomonitions-color: #1a7a8a;
+  --adomonitions-bg: #d0f0f5;
 }
 .adomonitions-tip {
   --adomonitions-color: #1a7f37;
