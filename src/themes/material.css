@@ -1,63 +1,74 @@
 /*
  * aDOMonitions — material theme (colors + style overrides)
  *
- * Styled after MkDocs Material admonitions (accent left-border,
- * uppercase title, subtle shadow).
+ * Styled after MkDocs Material admonitions (light theme):
+ * full 1.5px border, 4px radius, tinted title bar, white body, box shadow.
  *
- * Colors from the Material Design 2014 palette.
- * See: https://m2.material.io/design/color/the-color-system.html
- *   note:      Blue A200 (#448aff)      / Indigo 50 (#e8eaf6)
- *   tip:       Teal A400 (#00bfa5)      / Teal 50 (#e0f2f1)
- *   important: Deep Purple A200 (#7c4dff) / Deep Purple 50 (#ede7f6)
- *   warning:   Orange A400 (#ff9100)    / Orange 50 (#fff3e0)
- *   caution:   Red A200 (#ff5252)       / Pink 50 (#fce4ec)
- *   info:      Cyan A400 (#00b8d4)      / Cyan 50 (#e0f7fa)
- *   danger:    Red A400 (#ff1744)       / Pink 50 (#fce4ec)
+ * Colors from Material for MkDocs:
+ *   note:      #448aff  (Blue A200)
+ *   tip:       #00bfa5  (Teal A400)
+ *   important: #7c4dff  (Deep Purple A200)
+ *   warning:   #ff9100  (Orange A400)
+ *   caution:   #ff5252  (Red A200)
+ *   info:      #00b8d4  (Cyan A400)
+ *   danger:    #ff1744  (Red A400)
+ *
+ * Title bar background: type colour at 10% opacity ({color}1a).
  */
 
-/* Style overrides (core.css provides the base) */
+/* Structural overrides */
 .adomonitions {
-  border-radius: 0.125em;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 0.85rem;
+  border: 1.5px solid var(--adomonitions-color);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.05),
+    0 0 1px rgba(0, 0, 0, 0.1);
+  padding: 0 0.75rem 0.75rem;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .adomonitions-title {
   font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8em;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0 -0.75rem 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--adomonitions-title-bg);
 }
 
 .adomonitions-icon {
+  color: var(--adomonitions-color);
   font-size: 1.25em;
 }
 
 /* Type colors */
 .adomonitions-note {
   --adomonitions-color: #448aff;
-  --adomonitions-bg: #e8eaf6;
+  --adomonitions-title-bg: #448aff1a;
 }
 .adomonitions-tip {
   --adomonitions-color: #00bfa5;
-  --adomonitions-bg: #e0f2f1;
+  --adomonitions-title-bg: #00bfa51a;
 }
 .adomonitions-important {
   --adomonitions-color: #7c4dff;
-  --adomonitions-bg: #ede7f6;
+  --adomonitions-title-bg: #7c4dff1a;
 }
 .adomonitions-warning {
   --adomonitions-color: #ff9100;
-  --adomonitions-bg: #fff3e0;
+  --adomonitions-title-bg: #ff91001a;
 }
 .adomonitions-caution {
   --adomonitions-color: #ff5252;
-  --adomonitions-bg: #fce4ec;
+  --adomonitions-title-bg: #ff52521a;
 }
 .adomonitions-info {
   --adomonitions-color: #00b8d4;
-  --adomonitions-bg: #e0f7fa;
+  --adomonitions-title-bg: #00b8d41a;
 }
 .adomonitions-danger {
   --adomonitions-color: #ff1744;
-  --adomonitions-bg: #fce4ec;
+  --adomonitions-title-bg: #ff17441a;
 }

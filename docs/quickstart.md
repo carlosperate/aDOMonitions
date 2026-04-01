@@ -34,7 +34,7 @@ If your Markdown uses `:::type` fences instead of `[!TYPE]` blockquotes:
 
 ## Pick a theme
 
-Five bundled themes are available. The JS bundle includes all of them — just pass the name:
+Multiple themes are built in. Pass the name to use one:
 
 ```html
 <script src="https://unpkg.com/adomonitions/dist/adomonitions.umd.min.js"></script>
@@ -47,10 +47,10 @@ Five bundled themes are available. The JS bundle includes all of them — just p
 |-----------------|-------------|
 | `default-light` <br> `default-dark` <br> `default-auto` | Tinted background with rounded corners, **default** |
 | `github-light`  <br> `github-dark`  <br> `github-auto`  | GitHub callout style (transparent bg, left border highlight), light |
-| `material`      | MkDocs Material style (shadow, uppercase title) |
+| `material`      | MkDocs Material style (full border, colour in title background, smaller text size) |
 | `docusaurus`    | Docusaurus/Infima style (thick border, heavier title) |
 
-The theme controls colours and visual style only — both trigger styles produce the same output HTML.
+The theme controls colours and visual style only, both trigger styles produce the same output HTML.
 
 ## Scope to a container
 
