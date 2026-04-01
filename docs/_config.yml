@@ -7,4 +7,4 @@ remote_theme: carlosperate/jekyll-theme-rtd
 nav_external_links:
   - section: Demos
   - title: Live demo page
-    url: 'https://carlosperate.github.io/aDOMonitions/demo.html'
+    url: "https://carlosperate.github.io/aDOMonitions/demo.html"

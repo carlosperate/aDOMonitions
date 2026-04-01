@@ -4,7 +4,7 @@ nav_order: 2
 
 # Changelog
 
-## v0.2.0 (unreleased)
+## v0.2.0 (2026-04-01)
 
 ### New
 

@@ -3,6 +3,9 @@ import terser from "@rollup/plugin-terser";
 import { readFileSync, mkdirSync, writeFileSync, readdirSync } from "fs";
 import { resolve, basename } from "path";
 
+const { version } = JSON.parse(readFileSync("package.json", "utf-8"));
+const banner = `/*! aDOMonitions v${version} https://github.com/carlosperate/aDOMonitions | MIT License | Copyright (C) ${new Date().getFullYear()} Carlos Pereira Atencio */`;
+
 // Inline plugin: import .css files as exported strings (comments stripped)
 function cssString() {
   return {
@@ -68,12 +71,17 @@ export default [
   // UMD (minified)
   {
     ...shared,
-    plugins: [...shared.plugins, terser(), copyThemes()],
+    plugins: [
+      ...shared.plugins,
+      terser({ format: { comments: /^!/ } }),
+      copyThemes(),
+    ],
     output: {
       file: "dist/adomonitions.umd.min.js",
       format: "umd",
       name: "adomonitions",
       sourcemap: true,
+      banner,
     },
   },
 ];

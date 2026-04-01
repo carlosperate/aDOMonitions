@@ -1,7 +1,7 @@
 {
   "name": "adomonitions",
-  "version": "0.1.0",
-  "description": "Post-process static HTML to convert blockquotes and fenced markers into styled admonition callout boxes",
+  "version": "0.2.0",
+  "description": "Styled admonition callouts generated on page load, for static site generators whose Markdown renderer doesn't support them.",
   "author": "Carlos Pereira Atencio",
   "license": "MIT",
   "type": "module",
