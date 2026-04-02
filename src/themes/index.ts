@@ -25,9 +25,9 @@ export const coreCSS: string = core;
  * available for users who prefer a `<link>` tag.
  */
 const defaultAuto =
-  `@media (prefers-color-scheme: light) {\n${defaultLight}\n}\n` +
-  `@media (prefers-color-scheme: dark) {\n${defaultDark}\n}\n` +
-  defaultLight;
+  defaultLight +
+  `\n@media (prefers-color-scheme: light) {\n${defaultLight}\n}\n` +
+  `@media (prefers-color-scheme: dark) {\n${defaultDark}\n}`;
 
 /**
  * Composes github-auto from the github light and dark theme strings,
@@ -36,9 +36,9 @@ const defaultAuto =
  * available for users who prefer a `<link>` tag.
  */
 const githubAuto =
-  `@media (prefers-color-scheme: light) {\n${githubLight}\n}\n` +
-  `@media (prefers-color-scheme: dark) {\n${githubDark}\n}\n` +
-  githubLight;
+  githubLight +
+  `\n@media (prefers-color-scheme: light) {\n${githubLight}\n}\n` +
+  `@media (prefers-color-scheme: dark) {\n${githubDark}\n}`;
 
 /** Map of theme names to their CSS string content (colors + optional style overrides). */
 const themes: Record<ThemeName, string> = {

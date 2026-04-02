@@ -103,6 +103,7 @@ Icons are inline SVGs from [GitHub Octicons](https://primer.style/foundations/ic
 
 The bundled themes are inspired by and styled after the admonition designs of:
 
-- **[GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)** — alert syntax and visual style; colours from the [Primer design system](https://primer.style/foundations/color)
-- **[MkDocs Material](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)** — admonition design; colours from the [Material Design palette](https://m2.material.io/design/color/the-color-system.html)
-- **[Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)** — admonition fence syntax and visual style; colours from the [Infima CSS framework](https://infima.dev/)
+- **[GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)**: Alert syntax and visual style, colours from the [Primer design system](https://primer.style/foundations/color).
+- **[Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions)**:  Admonition syntax and visual style, colours from the [Infima CSS framework](https://infima.dev/).
+- **[MkDocs Material](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)**: Admonition design, colours from the [Material Design palette](https://m2.material.io/design/color/the-color-system.html).
+

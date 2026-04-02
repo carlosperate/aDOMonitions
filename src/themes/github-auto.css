@@ -20,6 +20,29 @@
   border-radius: 0;
 }
 
+/* Fallback when no preference is set (light) — must come first so media queries can override */
+.adomonitions-note {
+  --adomonitions-color: #1f6feb;
+}
+.adomonitions-tip {
+  --adomonitions-color: #1a7f37;
+}
+.adomonitions-important {
+  --adomonitions-color: #8250df;
+}
+.adomonitions-warning {
+  --adomonitions-color: #9a6700;
+}
+.adomonitions-caution {
+  --adomonitions-color: #cf222e;
+}
+.adomonitions-info {
+  --adomonitions-color: #1f6feb;
+}
+.adomonitions-danger {
+  --adomonitions-color: #c4390f;
+}
+
 /* Light mode */
 @media (prefers-color-scheme: light) {
   .adomonitions-note {
@@ -71,27 +94,4 @@
   .adomonitions-danger {
     --adomonitions-color: #f06a1a;
   }
-}
-
-/* Fallback when no preference is set (light) */
-.adomonitions-note {
-  --adomonitions-color: #1f6feb;
-}
-.adomonitions-tip {
-  --adomonitions-color: #1a7f37;
-}
-.adomonitions-important {
-  --adomonitions-color: #8250df;
-}
-.adomonitions-warning {
-  --adomonitions-color: #9a6700;
-}
-.adomonitions-caution {
-  --adomonitions-color: #cf222e;
-}
-.adomonitions-info {
-  --adomonitions-color: #1f6feb;
-}
-.adomonitions-danger {
-  --adomonitions-color: #c4390f;
 }

@@ -247,47 +247,16 @@
     </div>
 
     <div class="example">
-      <span class="example-label">Info</span>
+      <span class="example-label">Info (compact — body after &lt;br&gt;)</span>
       <div class="panel">
         <div class="panel-header">Markdown</div>
         <pre><code class="language-markdown">&gt; [!INFO]
-&gt; Here is some additional context.</code></pre>
+&gt; Body on same paragraph with a **bold** word.</code></pre>
       </div>
       <div class="panel">
         <div class="panel-header">Generated HTML</div>
         <pre><code class="language-html">&lt;blockquote&gt;
-  &lt;p&gt;[!INFO]&lt;/p&gt;
-  &lt;p&gt;Here is some additional context.&lt;/p&gt;
-&lt;/blockquote&gt;</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-header">
-          Live output <span class="status">— raw</span>
-        </div>
-        <div class="live gh">
-          <blockquote>
-            <p>[!INFO]</p>
-            <p>Here is some additional context.</p>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-
-    <div class="example">
-      <span class="example-label"
-        >Tip (separated — body in next &lt;p&gt;)</span
-      >
-      <div class="panel">
-        <div class="panel-header">Markdown</div>
-        <pre><code class="language-markdown">&gt; [!TIP]
-&gt;
-&gt; Separate paragraph body with a **bold** word.</code></pre>
-      </div>
-      <div class="panel">
-        <div class="panel-header">Generated HTML</div>
-        <pre><code class="language-html">&lt;blockquote&gt;
-  &lt;p&gt;[!TIP]&lt;/p&gt;
-  &lt;p&gt;Separate paragraph body with a
+  &lt;p&gt;[!INFO]&lt;br&gt;Body on same paragraph with a
   &lt;strong&gt;bold&lt;/strong&gt; word.&lt;/p&gt;
 &lt;/blockquote&gt;</code></pre>
       </div>
@@ -297,8 +266,44 @@
         </div>
         <div class="live gh">
           <blockquote>
+            <p>
+              [!INFO]<br />Body on same paragraph with a
+              <strong>bold</strong> word.
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <span class="example-label">Tip (multi-paragraph body)</span>
+      <div class="panel">
+        <div class="panel-header">Markdown</div>
+        <pre><code class="language-markdown">&gt; [!TIP]
+&gt;
+&gt; This is a separate paragraph from the title.
+&gt;
+&gt; And includes a second paragraph as well.</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Generated HTML</div>
+        <pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;[!TIP]&lt;/p&gt;
+  &lt;p&gt;This is a separate paragraph
+  from the title.&lt;/p&gt;
+  &lt;p&gt;And includes a second
+  paragraph as well.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          Live output <span class="status">— raw</span>
+        </div>
+        <div class="live gh">
+          <blockquote>
             <p>[!TIP]</p>
-            <p>Separate paragraph body with a <strong>bold</strong> word.</p>
+            <p>This is a separate paragraph from the title.</p>
+            <p>And includes a second paragraph as well.</p>
           </blockquote>
         </div>
       </div>
@@ -656,6 +661,14 @@ Proceed with extreme caution.&lt;/p&gt;
       let transformed = false;
 
       const darkThemes = new Set(["default-dark", "github-dark"]);
+      const autoThemes = new Set(["default-auto", "github-auto"]);
+      const osDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function shouldPanelBeDark(themeName) {
+        if (darkThemes.has(themeName)) return true;
+        if (autoThemes.has(themeName)) return osDark.matches;
+        return false;
+      }
 
       function setStatus(isTransformed) {
         statusEls.forEach((el) => {
@@ -669,6 +682,11 @@ Proceed with extreme caution.&lt;/p&gt;
           if (panel) panel.classList.toggle("panel-dark", isDark);
         });
       }
+
+      osDark.addEventListener("change", () => {
+        const themeName = document.getElementById("theme-select").value;
+        if (autoThemes.has(themeName)) setLivePanelDark(osDark.matches);
+      });
 
       setStatus(false);
 
@@ -688,7 +706,7 @@ Proceed with extreme caution.&lt;/p&gt;
             theme: themeName,
           });
         });
-        setLivePanelDark(darkThemes.has(themeName));
+        setLivePanelDark(shouldPanelBeDark(themeName));
         transformed = true;
         setStatus(true);
       }
@@ -706,7 +724,7 @@ Proceed with extreme caution.&lt;/p&gt;
       // Switch theme live — just call init() once to swap CSS (scanning is idempotent)
       document.getElementById("theme-select").addEventListener("change", () => {
         const themeName = document.getElementById("theme-select").value;
-        setLivePanelDark(darkThemes.has(themeName));
+        setLivePanelDark(shouldPanelBeDark(themeName));
         if (!transformed) return;
         adomonitions.init({ theme: themeName });
       });
