@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   font-weight: 600;
-  color: var(--adomonitions-color);
+  color: var(--adomonitions-fg, var(--adomonitions-color));
   margin: 0 0 0.4em;
 }
 

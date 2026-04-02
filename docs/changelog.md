@@ -4,6 +4,23 @@ nav_order: 2
 
 # Changelog
 
+## v0.3.0 (Unreleased)
+
+### New
+
+- .
+
+### Changed
+
+- .
+
+### Fixed
+
+- Docusaurus theme colours and styling updated to be more faithful to the original.
+
+
+# Changelog
+
 ## v0.2.0 (2026-04-01)
 
 ### New
