@@ -13,6 +13,7 @@ nav_order: 2
 ### Changed
 
 - Default theme tweaked to be a bit more distinctive from the others.
+- Default & GitHub theme colours tweaked for more separation between Caution and Danger.
 
 ### Fixed
 
