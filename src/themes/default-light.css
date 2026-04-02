@@ -9,6 +9,35 @@
  * danger reuses caution colors for cross-style compatibility.
  */
 
+.adomonitions {
+  border-left: 0.25em solid var(--adomonitions-color);
+  border-radius: 0.75em;
+  font-size: 0.95em;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(
+        in oklch,
+        var(--adomonitions-bg) 90%,
+        var(--adomonitions-color)
+      ),
+      var(--adomonitions-bg) 60%
+    ),
+    var(--adomonitions-bg);
+}
+
+.adomonitions-title {
+  letter-spacing: 0.02em;
+  font-size: 0.9em;
+  font-weight: 700;
+  margin-bottom: 0.8em !important;
+}
+
+.adomonitions p {
+  margin-top: 0;
+  margin-bottom: 0.7em;
+}
+
 .adomonitions-note {
   --adomonitions-color: #1a7a8a;
   --adomonitions-bg: #d0f0f5;
@@ -34,6 +63,6 @@
   --adomonitions-bg: #ddf4ff;
 }
 .adomonitions-danger {
-  --adomonitions-color: #cf222e;
-  --adomonitions-bg: #ffebe9;
+  --adomonitions-color: #c4390f;
+  --adomonitions-bg: #fff0eb;
 }

@@ -12,7 +12,7 @@ nav_order: 2
 
 ### Changed
 
-- .
+- Default theme tweaked to be a bit more distinctive from the others.
 
 ### Fixed
 
