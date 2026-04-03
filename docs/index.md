@@ -24,9 +24,9 @@ used to draw attention to important content.
 Normally Markdown renderers only support these via build-time plugins,
 so without them the markers end up as plain text in the HTML.
 
-aDOMonitions looks for either GitHub-style or Docusaurus-style markers
-and transforms the corresponding HTML into styled, accessible callout boxes
-with icons, colours, and ARIA roles.
+aDOMonitions looks for either GitHub Flavored Markdown (GFM) callout style or
+Docusaurus-style markers and transforms the corresponding HTML into styled,
+accessible callout boxes with icons, colours, and ARIA roles.
 
 ### Before
 

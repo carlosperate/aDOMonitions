@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80"
+  preserveAspectRatio="xMidYMid meet"
+  role="img" aria-label="aDOMonitions logo">
+  <title>aDOMonitions</title>
+
+  <!-- Background -->
+  <rect x="4" y="5" width="82" height="70" rx="12" fill="#c5d8f2"/>
+
+  <!-- < bracket -->
+  <polyline points="23,17 12,40 23,63"
+    fill="none" stroke="#1e3a8a" stroke-width="4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- > bracket -->
+  <polyline points="67,17 78,40 67,63"
+    fill="none" stroke="#1e3a8a" stroke-width="4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Callout box body -->
+  <rect x="30" y="20" width="30" height="40" rx="4" fill="#1f2937"/>
+  <!-- Left accent bar -->
+  <rect x="30" y="20" width="5" height="40" rx="2" fill="#f59e0b"/>
+  <!-- Simulated text lines -->
+  <rect x="40" y="29" width="14" height="3" rx="1" fill="#9ca3af"/>
+  <rect x="40" y="36" width="12" height="3" rx="1" fill="#6b7280"/>
+  <rect x="40" y="43" width="13" height="3" rx="1" fill="#6b7280"/>
+  <rect x="40" y="50" width="9"  height="3" rx="1" fill="#6b7280"/>
+</svg>

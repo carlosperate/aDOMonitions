@@ -1,5 +1,7 @@
 # aDOMonitions
 
+<img src="https://carlosperate.github.io/aDOMonitions/img/logo.svg" alt="aDOMonitions logo" width="128px" align="left">
+
 Styled admonition callouts generated on page load, for static site generators
 whose Markdown renderer doesn't support them.
 

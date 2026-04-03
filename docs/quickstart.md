@@ -15,7 +15,7 @@ Add these two lines to your HTML:
 
 That's it. By default this:
 
-- Scans `document.body` for GitHub-style `[!TYPE]` blockquotes
+- Scans `document.body` for GitHub Flavored Markdown (GFM) `[!TYPE]` blockquotes
 - Injects the `default-light` theme CSS into `<head>`
 - Transforms matching blockquotes into styled callout boxes
 

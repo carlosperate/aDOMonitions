@@ -54,14 +54,14 @@ Selects which marker syntax to look for.
 
 Both styles recognise all seven admonition types: `note`, `tip`, `important`, `info`, `warning`, `caution`, `danger`.
 
-- **`"github"`** — Scans `<blockquote>` elements for `[!TYPE]` markers in the first `<p>`. This is the typical HTML generated when using the Admonition syntax GitHub uses in Markdown.
+- **`"github"`** - Scans `<blockquote>` elements for `[!TYPE]` markers in the first `<p>`. This is the typical HTML generated when rendering GitHub Flavored Markdown (GFM) callout syntax.
   ```markdown
   > [!WARNING]
   > This is the warning text.
   ```
   - https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
 
-- **`"docusaurus"`** — Scans sibling `<p>` elements for `:::type` / `:::` fence pairs. This is the typical HTML generated when using the Admonition syntax Docusaurus uses in Markdown.
+- **`"docusaurus"`** - Scans sibling `<p>` elements for `:::type` / `:::` fence pairs. This is the typical HTML generated when using the `:::type` container syntax used by Docusaurus, VitePress, VuePress and others.
   ```markdown
   :::note
   This is the note text.

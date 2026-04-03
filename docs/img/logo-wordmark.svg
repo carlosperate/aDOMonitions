@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 80"
+  preserveAspectRatio="xMidYMid meet"
+  role="img" aria-label="aDOMonitions logo">
+  <title>aDOMonitions</title>
+
+  <!-- Icon: Background -->
+  <rect x="4" y="5" width="302" height="70" rx="16" fill="#c5d8f2"/>
+
+  <!-- Icon: < bracket -->
+  <polyline points="23,17 12,40 23,63"
+    fill="none" stroke="#1e3a8a" stroke-width="4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Icon: > bracket -->
+  <polyline points="67,17 78,40 67,63"
+    fill="none" stroke="#1e3a8a" stroke-width="4"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Icon: Callout box body -->
+  <rect x="30" y="20" width="30" height="40" rx="4" fill="#1f2937"/>
+  <!-- Icon: Left accent bar -->
+  <rect x="30" y="20" width="5" height="40" rx="2" fill="#f59e0b"/>
+  <!-- Icon: Simulated text lines -->
+  <rect x="40" y="29" width="14" height="3" rx="1" fill="#9ca3af"/>
+  <rect x="40" y="36" width="12" height="3" rx="1" fill="#6b7280"/>
+  <rect x="40" y="43" width="13" height="3" rx="1" fill="#6b7280"/>
+  <rect x="40" y="50" width="9"  height="3" rx="1" fill="#6b7280"/>
+
+  <!-- Wordmark -->
+  <text x="85" y="51"
+    font-family="ui-monospace,'SF Mono',Consolas,'Liberation Mono',monospace"
+    font-size="32" font-weight="700" letter-spacing="-1.5" style="font-kerning:none">
+    <tspan fill="#1e3a8a">a</tspan><tspan fill="#f59e0b">D</tspan><tspan fill="#f59e0b">O</tspan><tspan fill="#f59e0b">M</tspan><tspan fill="#1e3a8a" dx="1">o</tspan><tspan fill="#1e3a8a">n</tspan><tspan fill="#1e3a8a">i</tspan><tspan fill="#1e3a8a">t</tspan><tspan fill="#1e3a8a">i</tspan><tspan fill="#1e3a8a">o</tspan><tspan fill="#1e3a8a">n</tspan><tspan fill="#1e3a8a">s</tspan>
+  </text>
+</svg>
