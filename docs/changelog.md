@@ -17,8 +17,9 @@ nav_order: 2
 
 ### Fixed
 
-- Fix Default and GitHub themes "auto" mode that wasn't picking the right colours when OS was set to dark.
 - Docusaurus theme colours and styling updated to be more faithful to the original.
+- Fix Default and GitHub themes "auto" mode that wasn't picking the right colours when OS was set to dark.
+- Fix issue preserving child nodes from pre-processed admonition HTML.
 
 
 # Changelog

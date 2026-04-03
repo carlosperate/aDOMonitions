@@ -31,8 +31,15 @@ export function scanGitHub(config: ResolvedConfig): void {
     const result = parseGitHub(bq);
     if (!result) continue;
 
-    const { parsed, markerP, inlineText, hasBodySiblings, bodyNodesAfterBr } =
-      result;
+    const {
+      parsed,
+      markerP,
+      inlineText,
+      rawInlineText,
+      hasBodySiblings,
+      bodyNodesAfterBr,
+      inlineBodyNodes,
+    } = result;
     const doc = bq.ownerDocument;
     const wrapper = buildAdmonition(parsed, doc, config);
 
@@ -49,10 +56,18 @@ export function scanGitHub(config: ResolvedConfig): void {
         );
       }
       wrapper.appendChild(bodyP);
-    } else if (inlineText) {
-      // Inline text without <br> is always body content, not a custom title
+    } else if (inlineText || inlineBodyNodes.length > 0) {
+      // Inline text/nodes without <br> are always body content, not a custom title
       const bodyP = doc.createElement("p");
-      bodyP.textContent = inlineText;
+      if (inlineText) {
+        // Preserve trailing space from rawInlineText only when rich nodes follow;
+        // otherwise trim to avoid carrying trailing whitespace into a text-only body.
+        const text = inlineBodyNodes.length > 0 ? rawInlineText : inlineText;
+        bodyP.appendChild(doc.createTextNode(text));
+      }
+      for (const node of inlineBodyNodes) {
+        bodyP.appendChild(node);
+      }
       wrapper.appendChild(bodyP);
     }
 

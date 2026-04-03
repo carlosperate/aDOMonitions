@@ -318,6 +318,46 @@ const richBody: GitHubFixture[] = [
     expectedBody: '<p>Check <a href="https://example.com">this link</a>.</p>',
     expectedRole: "note",
   },
+  {
+    id: "inline-body-with-rich-nodes",
+    description:
+      "Inline body (no <br>) that contains rich nodes like <em> after marker text",
+    input:
+      "<blockquote><p>[!CAUTION] This action is <em>irreversible</em>.</p></blockquote>",
+    expectedType: "caution",
+    expectedTitle: "Caution",
+    expectedBody: "<p>This action is <em>irreversible</em>.</p>",
+    expectedRole: "alert",
+  },
+  {
+    id: "inline-body-rich-nodes-only",
+    description: "Inline body where all content after marker is a rich element",
+    input: "<blockquote><p>[!NOTE]<em>italic body</em></p></blockquote>",
+    expectedType: "note",
+    expectedTitle: "Note",
+    expectedBody: "<p><em>italic body</em></p>",
+    expectedRole: "note",
+  },
+  {
+    id: "inline-body-text-after-rich-node",
+    description: "Inline body with text both before and after a rich element",
+    input:
+      "<blockquote><p>[!NOTE] See <strong>bold</strong> text.</p></blockquote>",
+    expectedType: "note",
+    expectedTitle: "Note",
+    expectedBody: "<p>See <strong>bold</strong> text.</p>",
+    expectedRole: "note",
+  },
+  {
+    id: "compact-body-rich-nodes",
+    description: "BR compact variant where body content contains rich nodes",
+    input:
+      '<blockquote><p>[!TIP]<br>Read <a href="https://example.com">the docs</a>.</p></blockquote>',
+    expectedType: "tip",
+    expectedTitle: "Tip",
+    expectedBody: '<p>Read <a href="https://example.com">the docs</a>.</p>',
+    expectedRole: "note",
+  },
 ];
 
 // ---------------------------------------------------------------------------

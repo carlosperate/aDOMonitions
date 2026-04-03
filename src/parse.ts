@@ -44,12 +44,16 @@ export interface GitHubParseResult {
   parsed: ParsedAdmonition;
   /** The first `<p>` that contained the marker. */
   markerP: Element;
-  /** Text after `[!TYPE]` on the same line (before any `<br>`). May be empty. */
+  /** Text after `[!TYPE]` on the same line (before any `<br>`), trimmed. May be empty. */
   inlineText: string;
+  /** Raw (untrimmed) text after `[!TYPE]` — preserves trailing space before rich nodes. */
+  rawInlineText: string;
   /** Whether the marker `<p>` has sibling elements in the blockquote. */
   hasBodySiblings: boolean;
   /** DOM nodes that appear after a `<br>` in the marker `<p>` (compact variant). */
   bodyNodesAfterBr: Node[];
+  /** Remaining child nodes of `<p>` following the marker text (e.g. `<em>`, `<strong>`). */
+  inlineBodyNodes: Node[];
 }
 
 /**
@@ -65,7 +69,8 @@ export function parseGitHub(element: Element): GitHubParseResult | null {
   const markerResult = parseGitHubMarker(firstP);
   if (!markerResult) return null;
 
-  const { type, inlineText, bodyNodesAfterBr } = markerResult;
+  const { type, inlineText, rawInlineText, bodyNodesAfterBr, inlineBodyNodes } =
+    markerResult;
   const hasBodySiblings = firstP.nextElementSibling !== null;
 
   const title = resolveGitHubTitle(
@@ -78,8 +83,10 @@ export function parseGitHub(element: Element): GitHubParseResult | null {
     parsed: { type, title },
     markerP: firstP,
     inlineText,
+    rawInlineText,
     hasBodySiblings,
     bodyNodesAfterBr,
+    inlineBodyNodes,
   };
 }
 
@@ -91,10 +98,14 @@ export function parseGitHub(element: Element): GitHubParseResult | null {
 interface GitHubMarkerResult {
   /** The detected admonition type (lowercased). */
   type: AdmonitionType;
-  /** Text after `[!TYPE]` on the same line (before any `<br>`). May be empty. */
+  /** Text after `[!TYPE]` on the same line (before any `<br>`), trimmed. May be empty. */
   inlineText: string;
+  /** Raw (untrimmed) text after `[!TYPE]` — preserves trailing space before rich nodes. */
+  rawInlineText: string;
   /** DOM nodes that appear after a `<br>` in the same `<p>` (compact variant). */
   bodyNodesAfterBr: Node[];
+  /** Remaining child nodes of `<p>` that follow the marker text (e.g. `<em>`, `<strong>`). */
+  inlineBodyNodes: Node[];
 }
 
 /**
@@ -107,15 +118,21 @@ function parseGitHubMarker(p: Element): GitHubMarkerResult | null {
   let markerText = "";
   let foundBr = false;
   const bodyNodesAfterBr: Node[] = [];
+  const children = Array.from(p.childNodes);
+  let brokenAt = children.length; // index of first node not consumed by marker parsing
 
-  for (const node of Array.from(p.childNodes)) {
+  for (let i = 0; i < children.length; i++) {
+    const node = children[i];
     if (!foundBr) {
       if (node.nodeType === 3 /* TEXT */) {
         markerText += node.textContent ?? "";
       } else if (node.nodeName === "BR") {
         foundBr = true;
       } else {
-        // Non-text, non-br node before marker is complete → not a marker
+        // Non-text, non-br node encountered — stop consuming marker text here.
+        // If the marker regex matches what we have so far, the remaining nodes
+        // (this element and any after it) are inline body content.
+        brokenAt = i;
         break;
       }
     } else {
@@ -126,10 +143,16 @@ function parseGitHubMarker(p: Element): GitHubMarkerResult | null {
   const match = GITHUB_MARKER_RE.exec(markerText);
   if (!match) return null;
 
+  // Collect any child nodes not consumed during marker parsing (e.g. <em>, <strong>).
+  // When foundBr is true, brokenAt stays at children.length, so the slice is [] either way.
+  const inlineBodyNodes = children.slice(brokenAt);
+
   return {
     type: match[1].toLowerCase() as AdmonitionType,
     inlineText: match[2].trim(),
+    rawInlineText: match[2],
     bodyNodesAfterBr,
+    inlineBodyNodes,
   };
 }
 
