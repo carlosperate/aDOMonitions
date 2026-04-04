@@ -4,16 +4,13 @@ nav_order: 2
 
 # Changelog
 
-## v0.3.0 (Unreleased)
-
-### New
-
-- .
+## v0.3.0 (2026-04-05)
 
 ### Changed
 
 - Default theme tweaked to be a bit more distinctive from the others.
 - Default & GitHub theme colours tweaked for more separation between Caution and Danger.
+- Added project logo.
 
 ### Fixed
 
@@ -21,8 +18,6 @@ nav_order: 2
 - Fix Default and GitHub themes "auto" mode that wasn't picking the right colours when OS was set to dark.
 - Fix issue preserving child nodes from pre-processed admonition HTML.
 
-
-# Changelog
 
 ## v0.2.0 (2026-04-01)
 
