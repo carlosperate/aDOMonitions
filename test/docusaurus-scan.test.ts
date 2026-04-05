@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { scanDocusaurus } from "../src/scanner.js";
-import { DEFAULT_CLASSES } from "../src/types.js";
+import { DEFAULT_CLASSES, DEFAULT_TYPE_CLASSES } from "../src/types.js";
 import type { ResolvedConfig } from "../src/types.js";
 import { docusaurusFixtures } from "./fixtures/docusaurus.fixtures.js";
 
@@ -8,7 +8,7 @@ function makeConfig(root: Element): ResolvedConfig {
   return {
     root,
     triggerStyle: "docusaurus",
-    classes: { ...DEFAULT_CLASSES },
+    classes: { ...DEFAULT_CLASSES, types: { ...DEFAULT_TYPE_CLASSES } },
     theme: null,
   };
 }

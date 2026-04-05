@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { scan } from "../src/scanner.js";
-import { DEFAULT_CLASSES } from "../src/types.js";
+import { DEFAULT_CLASSES, DEFAULT_TYPE_CLASSES } from "../src/types.js";
 import type { ResolvedConfig } from "../src/types.js";
 
 function makeConfig(
@@ -10,7 +10,7 @@ function makeConfig(
   return {
     root,
     triggerStyle,
-    classes: { ...DEFAULT_CLASSES },
+    classes: { ...DEFAULT_CLASSES, types: { ...DEFAULT_TYPE_CLASSES } },
     theme: null,
   };
 }

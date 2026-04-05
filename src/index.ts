@@ -7,7 +7,7 @@
  */
 
 import type { ADOMonitionsConfig, ResolvedConfig } from "./types.js";
-import { DEFAULTS, DEFAULT_CLASSES } from "./types.js";
+import { DEFAULTS, DEFAULT_CLASSES, ADMONITION_TYPES } from "./types.js";
 import { injectCSS } from "./css-injector.js";
 import { scan } from "./scanner.js";
 
@@ -21,10 +21,16 @@ import { scan } from "./scanner.js";
 function resolveConfig(options?: ADOMonitionsConfig): ResolvedConfig {
   const triggerStyle = options?.triggerStyle ?? DEFAULTS.triggerStyle;
   const theme = options?.theme === undefined ? DEFAULTS.theme : options.theme;
+  const wrapper = options?.classes?.wrapper ?? DEFAULT_CLASSES.wrapper;
+  const userTypes = options?.classes?.types ?? {};
+  const types = Object.fromEntries(
+    ADMONITION_TYPES.map((t) => [t, userTypes[t] ?? `${wrapper}-${t}`]),
+  ) as Record<(typeof ADMONITION_TYPES)[number], string>;
   const classes = {
-    wrapper: options?.classes?.wrapper ?? DEFAULT_CLASSES.wrapper,
+    wrapper,
     title: options?.classes?.title ?? DEFAULT_CLASSES.title,
     icon: options?.classes?.icon ?? DEFAULT_CLASSES.icon,
+    types,
   };
 
   let root: Element;

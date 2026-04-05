@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { scanGitHub } from "../src/scanner.js";
-import { DEFAULT_CLASSES } from "../src/types.js";
+import { DEFAULT_CLASSES, DEFAULT_TYPE_CLASSES } from "../src/types.js";
 import type { ResolvedConfig } from "../src/types.js";
 import { githubFixtures } from "./fixtures/github.fixtures.js";
 
@@ -8,7 +8,7 @@ function makeConfig(root: Element): ResolvedConfig {
   return {
     root,
     triggerStyle: "github",
-    classes: { ...DEFAULT_CLASSES },
+    classes: { ...DEFAULT_CLASSES, types: { ...DEFAULT_TYPE_CLASSES } },
     theme: null,
   };
 }
@@ -132,13 +132,14 @@ describe("scanGitHub — non-matching", () => {
 // ---------------------------------------------------------------------------
 
 describe("scanGitHub — custom classes", () => {
-  it("uses custom class names", () => {
+  it("uses custom wrapper, title, and icon class names", () => {
     const container = setupAndScan(
       "<blockquote><p>[!NOTE]</p><p>Body.</p></blockquote>",
       {
         wrapper: "my-callout",
         title: "my-callout-title",
         icon: "my-callout-icon",
+        types: { ...DEFAULT_TYPE_CLASSES, note: "my-callout-note" },
       },
     );
     const output = container.querySelector('[data-adomonitions="true"]')!;

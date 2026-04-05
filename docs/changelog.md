@@ -4,16 +4,20 @@ nav_order: 2
 
 # Changelog
 
+## v0.3.1 (UNRELEASED)
+
+### New
+- The `init({ classes: ...})` config now includes options to also overwrite the admonition type CSS classes.
+
+
 ## v0.3.0 (2026-04-05)
 
 ### Changed
-
 - Default theme tweaked to be a bit more distinctive from the others.
 - Default & GitHub theme colours tweaked for more separation between Caution and Danger.
 - Added project logo.
 
 ### Fixed
-
 - Docusaurus theme colours and styling updated to be more faithful to the original.
 - Fix Default and GitHub themes "auto" mode that wasn't picking the right colours when OS was set to dark.
 - Fix issue preserving child nodes from pre-processed admonition HTML.
@@ -22,19 +26,16 @@ nav_order: 2
 ## v0.2.0 (2026-04-01)
 
 ### New
-
 - `default` theme family, in light, dark, and auto (OS detected) variants.
 - minified UMD build now contains copyright and license info in a header comment.
 
 ### Changed
-
 - Admonition types (info, warning, etc) were different for the GitHub and Docusaurus trigger styles, now they have been unfied and all are available in
 both trigger styles.
 - `idea` and `note` callouts now use different icons and slightly different colours in the default theme.
 - Improved docs and built site configuration (via GitHub Pages)
 
 ### Fixed
-
 - GitHub theme colours and styling updated to be more faithful to GitHub's callouts.
 - Material theme updated to better match the MkDocs Material callouts.
 - GitHub marker scanner now moves nodes instead of cloning them, avoids duplicated element IDs in the page and preserves any event listeners attached to child nodes.

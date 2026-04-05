@@ -36,10 +36,11 @@ export function buildAdmonition(
     wrapper: wrapperClass,
     title: titleClass,
     icon: iconClass,
+    types: typeClasses,
   } = config.classes;
 
   const wrapper = doc.createElement("div");
-  wrapper.className = `${wrapperClass} ${wrapperClass}-${type}`;
+  wrapper.className = `${wrapperClass} ${typeClasses[type]}`;
   wrapper.setAttribute("role", ARIA_ROLES[type]);
   wrapper.setAttribute("aria-label", title);
   wrapper.setAttribute("data-adomonitions", "true");

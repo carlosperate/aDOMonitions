@@ -247,4 +247,38 @@ describe("init — custom classes", () => {
     expect(wrapper).not.toBeNull();
     expect(wrapper!.classList.contains("my-callout-note")).toBe(true);
   });
+
+  it("applies custom per-type class when classes.types is set", () => {
+    document.body.innerHTML =
+      "<blockquote><p>[!NOTE]</p><p>Body.</p></blockquote>";
+
+    init({
+      classes: { wrapper: "callout", types: { note: "callout-info-note" } },
+    });
+
+    const wrapper = document.querySelector(".callout");
+    expect(wrapper).not.toBeNull();
+    expect(wrapper!.classList.contains("callout-info-note")).toBe(true);
+    expect(wrapper!.classList.contains("callout-note")).toBe(false);
+  });
+
+  it("only overrides specified types, leaving others as wrapper-prefixed defaults", () => {
+    document.body.innerHTML =
+      "<blockquote><p>[!WARNING]</p><p>Body.</p></blockquote>" +
+      "<blockquote><p>[!NOTE]</p><p>Body.</p></blockquote>";
+
+    init({
+      classes: { wrapper: "callout", types: { warning: "callout-alert" } },
+    });
+
+    const wrappers = document.querySelectorAll('[data-adomonitions="true"]');
+    const warningEl = Array.from(wrappers).find((el) =>
+      el.classList.contains("callout-alert"),
+    );
+    const noteEl = Array.from(wrappers).find((el) =>
+      el.classList.contains("callout-note"),
+    );
+    expect(warningEl).not.toBeNull();
+    expect(noteEl).not.toBeNull();
+  });
 });

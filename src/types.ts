@@ -16,6 +16,8 @@ export interface ADOMonitionsClasses {
   title?: string;
   /** Class applied to the icon span. Default: 'adomonitions-icon' */
   icon?: string;
+  /** Per-type class applied to the wrapper div alongside the wrapper class. Defaults to `{wrapper}-{type}`. */
+  types?: Partial<Record<AdmonitionType, string>>;
 }
 
 /** Available bundled themes. Set to null to bring your own CSS. */
@@ -45,15 +47,42 @@ export interface ADOMonitionsConfig {
 export interface ResolvedConfig {
   root: Element;
   triggerStyle: "github" | "docusaurus";
-  classes: Required<ADOMonitionsClasses>;
+  classes: {
+    wrapper: string;
+    title: string;
+    icon: string;
+    types: Record<AdmonitionType, string>;
+  };
   theme: ThemeName | null;
 }
 
-/** Default class names. */
-export const DEFAULT_CLASSES: Required<ADOMonitionsClasses> = {
+/** All admonition type identifiers as a runtime array (mirrors the AdmonitionType union). */
+export const ADMONITION_TYPES: readonly AdmonitionType[] = [
+  "note",
+  "tip",
+  "important",
+  "info",
+  "warning",
+  "caution",
+  "danger",
+];
+
+/** Default class names (excluding type classes, which depend on the resolved wrapper). */
+export const DEFAULT_CLASSES = {
   wrapper: "adomonitions",
   title: "adomonitions-title",
   icon: "adomonitions-icon",
+};
+
+/** Default per-type class names, computed from the default wrapper prefix. */
+export const DEFAULT_TYPE_CLASSES: Record<AdmonitionType, string> = {
+  note: "adomonitions-note",
+  tip: "adomonitions-tip",
+  important: "adomonitions-important",
+  info: "adomonitions-info",
+  warning: "adomonitions-warning",
+  caution: "adomonitions-caution",
+  danger: "adomonitions-danger",
 };
 
 /** Default configuration values. */
