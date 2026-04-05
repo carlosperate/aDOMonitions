@@ -4,7 +4,7 @@ nav_order: 2
 
 # Changelog
 
-## v0.3.1 (UNRELEASED)
+## v0.3.1 (2026-04-06)
 
 ### New
 - The `init({ classes: ...})` config now includes options to also overwrite the admonition type CSS classes.
