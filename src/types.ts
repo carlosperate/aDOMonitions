@@ -1,12 +1,14 @@
 /** All admonition type identifiers. Supported by both trigger styles. */
-export type AdmonitionType =
-  | "note"
-  | "tip"
-  | "important"
-  | "info"
-  | "warning"
-  | "caution"
-  | "danger";
+export const ADMONITION_TYPES = [
+  "note",
+  "tip",
+  "important",
+  "info",
+  "warning",
+  "caution",
+  "danger",
+] as const;
+export type AdmonitionType = (typeof ADMONITION_TYPES)[number];
 
 /** Configurable CSS class names for the output HTML. */
 export interface ADOMonitionsClasses {
@@ -20,23 +22,29 @@ export interface ADOMonitionsClasses {
   types?: Partial<Record<AdmonitionType, string>>;
 }
 
+/** Trigger styles (parser strategies). */
+export const TRIGGER_STYLES = ["github", "docusaurus"] as const;
+export type TriggerStyle = (typeof TRIGGER_STYLES)[number];
+
 /** Available bundled themes. Set to null to bring your own CSS. */
-export type ThemeName =
-  | "default-light"
-  | "default-dark"
-  | "default-auto"
-  | "github-light"
-  | "github-dark"
-  | "github-auto"
-  | "material"
-  | "docusaurus";
+export const THEME_NAMES = [
+  "default-light",
+  "default-dark",
+  "default-auto",
+  "github-light",
+  "github-dark",
+  "github-auto",
+  "material",
+  "docusaurus",
+] as const;
+export type ThemeName = (typeof THEME_NAMES)[number];
 
 /** Configuration options for init(). All fields are optional. */
 export interface ADOMonitionsConfig {
   /** CSS selector or Element to scope scanning. Default: document.body */
   root?: string | Element;
   /** Parser / trigger style. Default: 'github' */
-  triggerStyle?: "github" | "docusaurus";
+  triggerStyle?: TriggerStyle;
   /** Output HTML class names. */
   classes?: ADOMonitionsClasses;
   /** Bundled CSS theme to inject. null = bring your own. Default: 'github-light' */
@@ -46,7 +54,7 @@ export interface ADOMonitionsConfig {
 /** Resolved config with all defaults applied. */
 export interface ResolvedConfig {
   root: Element;
-  triggerStyle: "github" | "docusaurus";
+  triggerStyle: TriggerStyle;
   classes: {
     wrapper: string;
     title: string;
@@ -55,17 +63,6 @@ export interface ResolvedConfig {
   };
   theme: ThemeName | null;
 }
-
-/** All admonition type identifiers as a runtime array (mirrors the AdmonitionType union). */
-export const ADMONITION_TYPES: readonly AdmonitionType[] = [
-  "note",
-  "tip",
-  "important",
-  "info",
-  "warning",
-  "caution",
-  "danger",
-];
 
 /** Default class names (excluding type classes, which depend on the resolved wrapper). */
 export const DEFAULT_CLASSES = {

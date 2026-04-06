@@ -6,8 +6,19 @@
  * @module
  */
 
-import type { ADOMonitionsConfig, ResolvedConfig } from "./types.js";
-import { DEFAULTS, DEFAULT_CLASSES, ADMONITION_TYPES } from "./types.js";
+import type {
+  ADOMonitionsConfig,
+  ResolvedConfig,
+  ThemeName,
+  TriggerStyle,
+} from "./types.js";
+import {
+  DEFAULTS,
+  DEFAULT_CLASSES,
+  ADMONITION_TYPES,
+  THEME_NAMES,
+  TRIGGER_STYLES,
+} from "./types.js";
 import { injectCSS } from "./css-injector.js";
 import { scan } from "./scanner.js";
 
@@ -20,7 +31,18 @@ import { scan } from "./scanner.js";
  */
 function resolveConfig(options?: ADOMonitionsConfig): ResolvedConfig {
   const triggerStyle = options?.triggerStyle ?? DEFAULTS.triggerStyle;
+  if (!TRIGGER_STYLES.includes(triggerStyle as TriggerStyle)) {
+    throw new Error(
+      `aDOMonitions: unknown triggerStyle "${triggerStyle as string}" — expected one of: ${TRIGGER_STYLES.join(", ")}`,
+    );
+  }
+
   const theme = options?.theme === undefined ? DEFAULTS.theme : options.theme;
+  if (theme !== null && !THEME_NAMES.includes(theme as ThemeName)) {
+    throw new Error(
+      `aDOMonitions: unknown theme "${theme as string}" — expected one of: ${THEME_NAMES.join(", ")}`,
+    );
+  }
   const wrapper = options?.classes?.wrapper ?? DEFAULT_CLASSES.wrapper;
   const userTypes = options?.classes?.types ?? {};
   const types = Object.fromEntries(
@@ -71,4 +93,5 @@ export type {
   ADOMonitionsConfig,
   ADOMonitionsClasses,
   ThemeName,
+  TriggerStyle,
 } from "./types.js";

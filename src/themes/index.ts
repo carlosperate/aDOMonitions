@@ -59,5 +59,5 @@ const themes: Record<ThemeName, string> = {
  * @returns The CSS content as a string.
  */
 export function getThemeCSS(name: ThemeName): string {
-  return themes[name] ?? "";
+  return themes[name];
 }
