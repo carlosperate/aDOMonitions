@@ -47,7 +47,7 @@ export interface ADOMonitionsConfig {
   triggerStyle?: TriggerStyle;
   /** Output HTML class names. */
   classes?: ADOMonitionsClasses;
-  /** Bundled CSS theme to inject. null = bring your own. Default: 'github-light' */
+  /** Bundled CSS theme to inject. null = bring your own. Default: 'default-light' */
   theme?: ThemeName | null;
 }
 

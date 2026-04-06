@@ -1,6 +1,5 @@
 title: aDOMonitions
 description: Styled admonition callouts, converted on page load.
-plugins: [jekyll-remote-theme]
 remote_theme: carlosperate/jekyll-theme-rtd
 
 # Theme options
