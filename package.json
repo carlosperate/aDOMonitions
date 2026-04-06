@@ -1,6 +1,6 @@
 {
   "name": "adomonitions",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Styled admonition callouts generated on page load, for static site generators whose Markdown renderer doesn't support them.",
   "author": "Carlos Pereira Atencio",
   "license": "MIT",

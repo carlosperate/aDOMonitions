@@ -4,6 +4,12 @@ nav_order: 2
 
 # Changelog
 
+## v0.3.2 (2026-04-07)
+
+### Fixed
+- Added input validation to `adomonitions.init()` options.
+
+
 ## v0.3.1 (2026-04-06)
 
 ### New
