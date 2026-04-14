@@ -18,6 +18,15 @@ All options are optional, and passed to `init()` as an object.
       wrapper: "adomonitions",
       title: "adomonitions-title",
       icon: "adomonitions-icon",
+      types: {
+        note: "adomonitions-note",
+        tip: "adomonitions-tip",
+        important: "adomonitions-important",
+        info: "adomonitions-info",
+        warning: "adomonitions-warning",
+        caution: "adomonitions-caution",
+        danger: "adomonitions-danger",
+      },
     },
   });
 </script>

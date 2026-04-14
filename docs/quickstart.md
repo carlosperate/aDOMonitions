@@ -8,9 +8,7 @@ Add these two lines to your HTML:
 
 ```html
 <script src="https://unpkg.com/adomonitions/dist/adomonitions.umd.min.js"></script>
-<script>
-  adomonitions.init();
-</script>
+<script>adomonitions.init();</script>
 ```
 
 That's it. By default this:
@@ -100,7 +98,7 @@ A complete HTML page with GitHub-style admonitions:
 </html>
 ```
 
-## Using with npm
+## Usage as an npm dependency
 
 If you prefer a bundler-based workflow:
 
