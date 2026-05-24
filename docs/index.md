@@ -8,7 +8,7 @@ nav_exclude: true
 Styled admonition callouts generated on page load, for static site generators
 whose Markdown renderer doesn't support them.
 
-Check out the [Quickstart](https://carlosperate.github.io/aDOMonitions/quickstart.html)
+Check out the [Quickstart](quickstart.md)
 to use it right away!
 
 See the [Demo page](https://carlosperate.github.io/aDOMonitions/demo.html)

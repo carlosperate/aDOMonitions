@@ -31,8 +31,7 @@ For example, a GitHub style Markdown Admonition:
 > This will delete all data.
 ```
 
-Is likely converted to this raw HTML by static site generators without
-built-in admonition support:
+Would be converted to this non-admonition raw HTML:
 
 ```html
 <blockquote>
@@ -41,8 +40,8 @@ built-in admonition support:
 </blockquote>
 ```
 
-Running aDOMonitions transforms that HTML into this styled callout box,
-with accompanying CSS for colours, layout, and an icon:
+Running aDOMonitions transforms, on page load, that HTML into this styled
+callout box, with accompanying CSS for colours, layout, and an icon:
 
 ```html
 <div class="adomonitions adomonitions-warning" role="alert" aria-label="Warning">
@@ -78,7 +77,8 @@ Check out the [Quick Start guide](https://carlosperate.github.io/aDOMonitions/qu
 
 ## Themes
 
-Eight bundled themes. The active theme is injected automatically as a `<style>` tag:
+Eight bundled themes. The active theme is injected automatically as a
+`<style>` tag in the page DOM:
 
 | Theme           | Description |
 |-----------------|-------------|
